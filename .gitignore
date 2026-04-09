@@ -1,5 +1,14 @@
-# CSV data files
+# Large data files
 *.csv
+*.xlsx
+*.asc
+*.lock
+
+# Raw data folder (too large for git)
+data/raw/
+
+# Large archives
+*.zip
 
 # Python
 __pycache__/
