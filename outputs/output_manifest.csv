@@ -1,0 +1,13 @@
+file,row_count
+outputs/master_dataset_monthly.csv,4664
+outputs/per_river/buzimba_monthly.csv,396
+outputs/per_river/mutimbuzi_monthly.csv,431
+outputs/per_river/jiji_monthly.csv,528
+outputs/per_river/nyamagana_monthly.csv,528
+outputs/per_river/mpanda_monthly.csv,191
+outputs/per_river/nyakagunda_monthly.csv,528
+outputs/per_river/kaburantwa_monthly.csv,509
+outputs/per_river/mulembwe_monthly.csv,521
+outputs/per_river/nyengwe_monthly.csv,504
+outputs/per_river/rusizi_monthly.csv,528
+merge_summary.md,
