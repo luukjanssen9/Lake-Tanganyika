@@ -1,4 +1,7 @@
 # Large data files (except processed outputs)
+*.csv
+!data/outputs/**/*.csv
+!data/outputs/*.csv
 *.xlsx
 *.asc
 *.lock
