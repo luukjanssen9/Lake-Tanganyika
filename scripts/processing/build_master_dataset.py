@@ -268,7 +268,7 @@ def load_water_levels() -> tuple[pd.DataFrame, dict[str, dict[str, object]], dic
         panel["water_level"] = panel["water_level_observed"]
         panel["year"] = panel["date"].dt.year
         panel["month"] = panel["date"].dt.month
-        panel = panel[["river", "date", "year", "month", "water_level", "water_level_observed"]]
+        panel = panel[["river", "date", "year", "month", "water_level"]]
         panels.append(panel)
 
         latitude = pd.to_numeric(cleaned[lat_column], errors="coerce").dropna()
@@ -368,19 +368,12 @@ def load_temperature_data() -> tuple[pd.DataFrame, pd.DataFrame]:
         cleaned["station_key"] = cleaned["station_name_raw"].map(normalize_text)
         cleaned["temp_max_observed"] = pd.to_numeric(cleaned[temp_max_column], errors="coerce")
         cleaned["temp_min_observed"] = pd.to_numeric(cleaned[temp_min_column], errors="coerce")
-        cleaned["temp_mean_observed"] = cleaned.apply(
-            lambda row: (row["temp_max_observed"] + row["temp_min_observed"]) / 2
-            if pd.notna(row["temp_max_observed"]) and pd.notna(row["temp_min_observed"])
-            else pd.NA,
-            axis=1,
-        )
         deduped = (
             cleaned.groupby(["station_key", "date"], as_index=False)
             .agg(
                 station_name_raw=("station_name_raw", first_non_null),
                 temp_max_observed=("temp_max_observed", first_non_null),
                 temp_min_observed=("temp_min_observed", first_non_null),
-                temp_mean_observed=("temp_mean_observed", first_non_null),
                 lat=(lat_column, first_non_null),
                 lon=(lon_column, first_non_null),
             )
@@ -539,7 +532,6 @@ def attach_observed_climate(
                     "date",
                     "temp_max_observed",
                     "temp_min_observed",
-                    "temp_mean_observed",
                     "temp_source",
                 ]
             ]
@@ -741,7 +733,7 @@ def main() -> None:
     temperature, temperature_stations = load_temperature_data()
     precipitation, precipitation_stations, precip_summary = load_precipitation_data()
 
-    combined = water_levels.merge(runoff[["river", "date", "runoff", "runoff_observed"]], on=["river", "date"], how="left")
+    combined = water_levels.merge(runoff[["river", "date", "runoff"]], on=["river", "date"], how="left")
     combined = attach_observed_climate(
         combined,
         river_meta=river_meta,
@@ -761,12 +753,9 @@ def main() -> None:
         "year",
         "month",
         "water_level",
-        "water_level_observed",
         "runoff",
-        "runoff_observed",
         "temp_max_observed",
         "temp_min_observed",
-        "temp_mean_observed",
         "precip_observed",
         "temp_source",
         "precip_source",

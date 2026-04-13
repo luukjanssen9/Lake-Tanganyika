@@ -91,9 +91,8 @@ def impute_river(df: pd.DataFrame, river: str) -> pd.DataFrame:
 
     # ---- Temperature -------------------------------------------------------
     for obs_col, era5_col, flag_col in [
-        ("temp_max_observed",  "era5_t2m_max",  "temp_max_imputed"),
-        ("temp_min_observed",  "era5_t2m_min",  "temp_min_imputed"),
-        ("temp_mean_observed", "era5_t2m_mean", "temp_mean_imputed"),
+        ("temp_max_observed", "era5_t2m_max", "temp_max_imputed"),
+        ("temp_min_observed", "era5_t2m_min", "temp_min_imputed"),
     ]:
         missing = out[obs_col].isna()
         out[flag_col] = False
