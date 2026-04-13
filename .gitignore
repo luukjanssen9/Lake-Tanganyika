@@ -1,13 +1,14 @@
-# Large data files (except outputs)
+# Large data files (except processed outputs)
 *.csv
-!outputs/**/*.csv
-!outputs/*.csv
+!data/outputs/**/*.csv
+!data/outputs/*.csv
 *.xlsx
 *.asc
 *.lock
 
-# Raw data folder (too large for git)
+# Raw data and ERA5 downloads (too large for git)
 data/raw/
+data/era5/
 
 # Large archives
 *.zip
