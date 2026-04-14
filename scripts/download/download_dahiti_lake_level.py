@@ -9,17 +9,18 @@ Source: https://dahiti.dgfi.tum.de/en/products/water-level-inland-waters/
 Data:   Satellite altimetry, ~10-day intervals, ~1992–present
 
 Output:
-    outputs/lake_tanganyika_water_level.csv
+    outputs/dahiti/lake_tanganyika_water_level.csv
 
 Setup
 -----
 1. Register (free) at https://dahiti.dgfi.tum.de/en/register/
-2. pip install requests
-3. Run:
-       python scripts/download_dahiti_lake_level.py --username <u> --password <p>
+2. Log in and find your API key at https://dahiti.dgfi.tum.de/en/profile/
+3. pip install requests
+4. Run:
+       python scripts/download/download_dahiti_lake_level.py --api-key <key>
 
-   Or set environment variables:
-       DAHITI_USER and DAHITI_PASS
+   Or set environment variable:
+       DAHITI_API_KEY
 """
 
 from __future__ import annotations
@@ -38,66 +39,49 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-DAHITI_API_URL  = "https://dahiti.dgfi.tum.de/api/v1/"
+DAHITI_API_URL     = "https://dahiti.dgfi.tum.de/api/v2/"
 LAKE_TANGANYIKA_ID = 6   # DAHITI object ID for Lake Tanganyika
 
 OUTPUT_DIR  = Path(__file__).resolve().parent.parent.parent / "data" / "outputs" / "dahiti"
 OUTPUT_PATH = OUTPUT_DIR / "lake_tanganyika_water_level.csv"
 
 
-def fetch_water_level(username: str, password: str) -> list[dict]:
+def fetch_water_level(api_key: str) -> list[dict]:
     try:
         import requests
     except ImportError:
         log.error("requests not installed. Run:  pip install requests")
         sys.exit(1)
 
-    log.info("Authenticating with DAHITI …")
-    session = requests.Session()
-
-    # Authenticate
-    auth_resp = session.post(
-        DAHITI_API_URL + "auth/",
-        json={"username": username, "password": password},
-        timeout=30,
-    )
-    if auth_resp.status_code != 200:
-        log.error("Authentication failed (status %d): %s", auth_resp.status_code, auth_resp.text)
-        sys.exit(1)
-
-    token = auth_resp.json().get("token")
-    if not token:
-        log.error("No token in response: %s", auth_resp.json())
-        sys.exit(1)
-
-    headers = {"Authorization": f"Token {token}"}
-
     log.info("Fetching water level data for Lake Tanganyika (ID=%d) …", LAKE_TANGANYIKA_ID)
-    data_resp = session.get(
-        DAHITI_API_URL + f"water-level/{LAKE_TANGANYIKA_ID}/",
-        headers=headers,
+    resp = requests.get(
+        DAHITI_API_URL + "download-water-level/",
+        params={"api_key": api_key, "dahiti_id": LAKE_TANGANYIKA_ID, "format": "json"},
         timeout=60,
     )
-    if data_resp.status_code != 200:
-        log.error("Data request failed (status %d): %s", data_resp.status_code, data_resp.text)
+    if resp.status_code != 200:
+        log.error("Request failed (status %d): %s", resp.status_code, resp.text[:500])
         sys.exit(1)
 
-    entries = data_resp.json()
+    data = resp.json()
+    # v2 response: {"data": [...]} or a list directly
+    entries = data.get("data", data) if isinstance(data, dict) else data
     log.info("  Received %d records", len(entries))
     return entries
 
 
-def run(username: str, password: str) -> None:
-    entries = fetch_water_level(username, password)
+def run(api_key: str) -> None:
+    entries = fetch_water_level(api_key)
 
     rows = []
     for e in entries:
         rows.append({
-            "date":            e.get("date"),
-            "water_level_m":   e.get("water_level"),
-            "uncertainty_m":   e.get("uncertainty"),
+            "date":          e.get("datetime"),
+            "water_level_m": e.get("wse"),
+            "uncertainty_m": e.get("wse_u"),
         })
 
+    rows = [r for r in rows if r["date"] is not None]
     rows.sort(key=lambda r: r["date"])
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -111,16 +95,16 @@ def run(username: str, password: str) -> None:
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Download Lake Tanganyika water level from DAHITI."
+        description="Download Lake Tanganyika water level from DAHITI (API v2)."
     )
-    parser.add_argument("--username", default=os.environ.get("DAHITI_USER"), help="DAHITI username")
-    parser.add_argument("--password", default=os.environ.get("DAHITI_PASS"), help="DAHITI password")
+    parser.add_argument("--api-key", default=os.environ.get("DAHITI_API_KEY"), help="DAHITI API key")
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = _parse_args()
-    if not args.username or not args.password:
-        print("Provide credentials via --username/--password or DAHITI_USER/DAHITI_PASS env vars.")
+    if not args.api_key:
+        print("Provide your API key via --api-key or the DAHITI_API_KEY environment variable.")
+        print("Find your key at: https://dahiti.dgfi.tum.de/en/profile/")
         sys.exit(1)
-    run(args.username, args.password)
+    run(args.api_key)
