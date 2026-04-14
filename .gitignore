@@ -2,7 +2,6 @@
 *.csv
 !data/outputs/**/*.csv
 !data/outputs/*.csv
-*.xlsx
 *.asc
 *.lock
 
