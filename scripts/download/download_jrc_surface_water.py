@@ -51,19 +51,19 @@ START_DATE = "1984-01-01"
 END_DATE   = "2026-01-01"
 
 RIVER_LOCATIONS: dict[str, tuple[float, float]] = {
-    "Nyengwe":    (-4.25, 29.50),
-    "Buzimba":    (-4.00, 29.50),
-    "Mulembwe":   (-4.00, 29.50),
-    "Jiji":       (-4.00, 29.75),
-    "Mpanda":     (-3.00, 29.50),
-    "Mutimbuzi":  (-3.25, 29.25),
-    "Rusizi":     (-3.25, 29.25),
-    "Kaburantwa": (-3.00, 29.25),
-    "Nyamagana":  (-3.00, 29.25),
-    "Nyakagunda": (-2.75, 29.00),
+    "Nyengwe":    (-4.17, 29.54),   # Nyengwe (Rimbo) gauge
+    "Buzimba":    (-4.05, 29.48),   # Buzimba (Gatete) gauge
+    "Mulembwe":   (-4.00, 29.44),   # Mulembwe (Mutambara) gauge
+    "Jiji":       (-3.92, 29.64),   # Jiji (Ndago) gauge
+    "Mpanda":     (-3.12, 29.40),   # Mpanda (Gatura) gauge
+    "Mutimbuzi":  (-3.32, 29.33),   # Mutimbuzi (Pont Aéroport) gauge
+    "Rusizi":     (-3.34, 29.27),   # Rusizi (Gatumba) gauge
+    "Kaburantwa": (-2.99, 29.22),   # Kaburantwa (Mission) gauge
+    "Nyamagana":  (-2.90, 29.13),   # Nyamagana (Murambi) gauge
+    "Nyakagunda": (-2.76, 29.08),   # Nyakagunda (Musenyi) gauge
 }
 
-BUFFER_RADIUS_M = 5000
+BUFFER_RADIUS_M = 2000
 
 OUTPUT_DIR    = Path(__file__).resolve().parent.parent.parent / "data" / "outputs"
 PER_RIVER_DIR = OUTPUT_DIR / "per_river"
