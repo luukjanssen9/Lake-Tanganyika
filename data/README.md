@@ -10,8 +10,10 @@ Raw input data lives in `raw/` and `era5/`. Processed outputs ready for analysis
 ## raw/Lake Tanganyika Data/Donnees Hydro et Meteo Mensuelles_IGEBU/
 
 **Source:** IGEBU (Institut Géographique du Burundi)
+**Website:** https://www.igebu.bi
 **Type:** In-situ measurements, monthly resolution
 **Coverage:** Varies per station, roughly 1980s–2020s
+**Access:** Data provided directly by IGEBU upon request. Not publicly available online.
 
 Contains two types of files:
 
@@ -26,6 +28,8 @@ Contains two types of files:
 
 - **Precipitation file** (`les precipitations mensuelles.xlsx`)
   Monthly precipitation totals (mm) covering multiple stations across Burundi
+
+**Citation:** IGEBU (Institut Géographique du Burundi). Hydrometeorological monthly data for the Lake Tanganyika catchment. Bujumbura, Burundi. Data obtained upon request.
 
 ---
 
@@ -48,14 +52,17 @@ Contains two types of files:
 
 ## era5/
 
-**Source:** Copernicus Climate Data Store (CDS)
-**Dataset:** `reanalysis-era5-single-levels-timeseries`
-**Reference:** Hersbach et al. (2020), doi:10.1002/qj.3803
+**Source:** Copernicus Climate Data Store (CDS), European Centre for Medium-Range Weather Forecasts (ECMWF)
+**Dataset:** ERA5 hourly data on single levels
+**Website:** https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-timeseries
 **Download script:** `scripts/download/era5/download_era5.py`
 
-ERA5 reanalysis data at 0.25° grid resolution, downloaded for 8 grid points
+ERA5 reanalysis data at 0.25° grid resolution (~28 km), downloaded for 8 grid points
 snapped to the nearest ERA5 grid node for each river/station location.
 Full hourly time series from 1940 to present.
+
+**Citation:**
+> Hersbach, H., Bell, B., Berrisford, P., et al. (2020). The ERA5 global reanalysis. *Quarterly Journal of the Royal Meteorological Society*, 146(730), 1999–2049. https://doi.org/10.1002/qj.3803
 
 **Variables downloaded:**
 | Variable | Description | Unit |
@@ -66,8 +73,6 @@ Full hourly time series from 1940 to present.
 | `v10` | 10m V-component of wind | m/s |
 | `d2m` | 2m dewpoint temperature | K |
 | `msl` | Mean sea level pressure | Pa |
-| `sro` | Surface runoff | m |
-| `pet` | Potential evapotranspiration | m |
 
 **Grid points and stations covered:**
 | Folder | Lat | Lon | Stations |
@@ -82,7 +87,7 @@ Full hourly time series from 1940 to present.
 | `grid_m2.75_29.00` | -2.75 | 29.00 | Nyakagunda |
 
 **Subfolders:**
-- `csv/` — Hourly ERA5 data as CSV, one file per grid point (1940–2026, ~gitignored)
+- `csv/` — Hourly ERA5 data as CSV, one file per grid point (1940–2026, excluded from git)
 - `csv_monthly/` — Monthly aggregated ERA5 (mean/sum, unit-converted). Produced by `scripts/download/era5/aggregate_monthly.py`
 
 ---
@@ -98,21 +103,28 @@ Processed outputs ready for analysis. Produced by `scripts/processing/build_mast
 | `per_river/*_monthly.csv` | Per-river version of the master dataset (one file per river). |
 | `per_river/*_imputed_monthly.csv` | Per-river imputed version. |
 | `output_manifest.csv` | Summary table of data availability per river (date range, row counts, missing values). |
-| `imputed_output_from_mean/` | Earlier imputation outputs (Ezgi's method, mean-based). Provided by project collaborators. |
-| `dahiti/lake_tanganyika_water_level.csv` | Lake Tanganyika surface water elevation from satellite altimetry (~10-day intervals, 1992–present). See below. |
+| `imputed_output_from_mean/` | Earlier imputation outputs (mean-based method). Provided by project collaborators. |
+| `dahiti/` | Lake Tanganyika satellite altimetry water level. See below. |
+| `jrc/` | JRC Global Surface Water monthly water fraction per river. See below. |
+| `ndvi/` | MODIS NDVI monthly vegetation index per river. See below. |
+
+---
 
 ### outputs/dahiti/
 
 **Source:** DAHITI — Database for Hydrological Time Series of Inland Waters
-**Institution:** DGFI-TUM (Deutsches Geodätisches Forschungsinstitut, TU München)
-**Reference:** https://dahiti.dgfi.tum.de
+**Institution:** DGFI-TUM (Deutsches Geodätisches Forschungsinstitut, Technische Universität München)
+**Website:** https://dahiti.dgfi.tum.de
 **DAHITI ID:** 25 (Lake Tanganyika)
 **Download script:** `scripts/download/download_dahiti_lake_level.py`
 
-Satellite altimetry-derived lake surface elevation measured at a single
-satellite ground track crossing point (lon 29.718, lat -6.054), in the
-southern-central part of the lake. Since Lake Tanganyika is large and
-well-mixed, this is representative of the whole lake's water level.
+Satellite altimetry-derived lake surface elevation (~10-day intervals, 1992–present), measured at
+a single satellite ground track crossing point (lon 29.718, lat -6.054) in the southern-central
+part of the lake. Since Lake Tanganyika is large and well-mixed, this is representative of the
+whole lake's water level.
+
+**Citation:**
+> Schwatke, C., Dettmering, D., Bosch, W., & Seitz, F. (2015). DAHITI – an innovative approach for estimating water level time series over inland waters using multi-mission satellite altimetry. *Hydrology and Earth System Sciences*, 19(10), 4345–4364. https://doi.org/10.5194/hess-19-4345-2015
 
 **Columns:**
 | Column | Description | Unit |
@@ -120,3 +132,59 @@ well-mixed, this is representative of the whole lake's water level.
 | `date` | Observation datetime | UTC |
 | `water_level_m` | Water surface elevation (WSE) above geoid | metres (~774 m) |
 | `uncertainty_m` | Estimated measurement uncertainty | metres |
+
+---
+
+### outputs/jrc/
+
+**Source:** JRC Global Surface Water (GSW), European Commission Joint Research Centre
+**Dataset:** JRC/GSW1_4/MonthlyHistory via Google Earth Engine
+**Website:** https://global-surface-water.appspot.com/
+**GEE catalogue:** https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_MonthlyHistory
+**Download script:** `scripts/download/download_jrc_surface_water.py`
+
+Monthly fraction of 30m Landsat pixels classified as water within a 2 km radius buffer
+around each river mouth (1984–present). See `outputs/jrc/README.md` for a full assessment
+of data quality and usefulness per river.
+
+**Citation:**
+> Pekel, J.-F., Cottam, A., Gorelick, N., & Belward, A. S. (2016). High-resolution mapping of global surface water and its long-term changes. *Nature*, 540, 418–422. https://doi.org/10.1038/nature20584
+
+**Columns:**
+| Column | Description | Unit |
+|---|---|---|
+| `river` | River name | — |
+| `year` / `month` | Time period | — |
+| `water_fraction` | Fraction of valid pixels classified as water | 0.0–1.0 |
+| `water_pixels` | Number of 30m pixels classified as water | count |
+| `total_pixels` | Total valid (non-cloud) pixels in the buffer | count |
+
+---
+
+### outputs/ndvi/
+
+**Source:** NASA MODIS Terra — MOD13A1 Version 6.1
+**Dataset:** MODIS/061/MOD13A1 via Google Earth Engine
+**Website:** https://lpdaac.usgs.gov/products/mod13a1v061/
+**GEE catalogue:** https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13A1
+**Download script:** `scripts/download/download_modis_ndvi.py`
+
+Monthly mean NDVI (Normalised Difference Vegetation Index) extracted from 500m 16-day MODIS
+composites at each river's ERA5 grid point (2000–present). NDVI ranges from -1 to +1, where
+values above 0.6 indicate dense healthy vegetation, 0.3–0.6 moderate vegetation, and below
+0.2 bare soil or water. High values indicate dense vegetation cover which affects catchment
+runoff and flood risk.
+
+**Note:** Nyengwe has 34 null values and suspect low values, likely because its ERA5 sampling
+point falls on or near Lake Tanganyika rather than land. Buzimba and Mulembwe share identical
+values as they use the same ERA5 grid point.
+
+**Citation:**
+> Didan, K. (2021). MODIS/Terra Vegetation Indices 16-Day L3 Global 500m SIN Grid V061. NASA EOSDIS Land Processes Distributed Active Archive Center (LP DAAC). https://doi.org/10.5067/MODIS/MOD13A1.061
+
+**Columns:**
+| Column | Description | Unit |
+|---|---|---|
+| `river` | River name | — |
+| `year` / `month` | Time period | — |
+| `ndvi` | Monthly mean NDVI | -1.0 to 1.0 |
