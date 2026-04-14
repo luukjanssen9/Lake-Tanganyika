@@ -56,8 +56,8 @@ RIVER_LOCATIONS: dict[str, tuple[float, float]] = {
     "Nyakagunda": (-2.75, 29.00),
 }
 
-OUTPUT_DIR     = Path(__file__).resolve().parent.parent.parent / "data" / "outputs"
-PER_RIVER_DIR  = OUTPUT_DIR / "per_river"
+OUTPUT_DIR     = Path(__file__).resolve().parent.parent.parent / "data" / "outputs" / "ndvi"
+PER_RIVER_DIR  = OUTPUT_DIR
 COMBINED_PATH  = OUTPUT_DIR / "ndvi_monthly.csv"
 
 NDVI_SCALE = 0.0001   # MOD13A1 raw integer → float NDVI
@@ -85,13 +85,16 @@ def _build_monthly_ndvi(ee, river: str, lat: float, lon: float):
     months = ee.List.sequence(0, n_months.subtract(1))
 
     def monthly_mean(offset):
-        month_start = start.advance(offset, "month")
-        month_end   = month_start.advance(1, "month")
-        mean_img    = (
-            collection
-            .filterDate(month_start, month_end)
-            .mean()
-        )
+        month_start  = start.advance(offset, "month")
+        month_end    = month_start.advance(1, "month")
+        monthly_col  = collection.filterDate(month_start, month_end)
+
+        mean_img = ee.Image(ee.Algorithms.If(
+            monthly_col.size().gt(0),
+            monthly_col.mean(),
+            ee.Image.constant(0).rename("NDVI").selfMask(),
+        ))
+
         value = mean_img.reduceRegion(
             reducer  = ee.Reducer.mean(),
             geometry = point,
@@ -120,7 +123,7 @@ def run() -> None:
         sys.exit(1)
 
     try:
-        ee.Initialize()
+        ee.Initialize(project="first-apex-493315-s2")
     except Exception:
         log.error(
             "GEE authentication required. Run once:\n"
