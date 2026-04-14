@@ -65,8 +65,8 @@ RIVER_LOCATIONS: dict[str, tuple[float, float]] = {
 
 BUFFER_RADIUS_M = 2000
 
-OUTPUT_DIR    = Path(__file__).resolve().parent.parent.parent / "data" / "outputs"
-PER_RIVER_DIR = OUTPUT_DIR / "per_river"
+OUTPUT_DIR    = Path(__file__).resolve().parent.parent.parent / "data" / "outputs" / "jrc"
+PER_RIVER_DIR = OUTPUT_DIR
 COMBINED_PATH = OUTPUT_DIR / "jrc_surface_water_monthly.csv"
 
 
