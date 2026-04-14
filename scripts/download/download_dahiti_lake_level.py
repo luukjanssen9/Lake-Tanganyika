@@ -41,7 +41,7 @@ log = logging.getLogger(__name__)
 DAHITI_API_URL  = "https://dahiti.dgfi.tum.de/api/v1/"
 LAKE_TANGANYIKA_ID = 6   # DAHITI object ID for Lake Tanganyika
 
-OUTPUT_DIR  = Path(__file__).resolve().parent.parent.parent / "data" / "outputs"
+OUTPUT_DIR  = Path(__file__).resolve().parent.parent.parent / "data" / "outputs" / "dahiti"
 OUTPUT_PATH = OUTPUT_DIR / "lake_tanganyika_water_level.csv"
 
 
