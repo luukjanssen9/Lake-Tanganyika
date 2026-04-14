@@ -9,6 +9,9 @@ Band:    waterClassification
 For each river location the script extracts the fraction of water-covered pixels
 within a 5 km radius buffer and saves monthly time series.
 
+Uses server-side GEE mapping (no per-month Python loop) for speed —
+all months are computed in a single GEE call per river (~15–45 min total).
+
 Source: https://global-surface-water.appspot.com/
 Paper:  Pekel et al. (2016) Nature 540, 418–422
 
@@ -23,7 +26,7 @@ Setup
 3. Authenticate once:
        python -c "import ee; ee.Authenticate()"
 4. Run:
-       python scripts/download_jrc_surface_water.py
+       python scripts/download/download_jrc_surface_water.py
 """
 
 from __future__ import annotations
@@ -44,10 +47,9 @@ log = logging.getLogger(__name__)
 # Configuration — same grid points as ERA5 and NDVI scripts
 # ---------------------------------------------------------------------------
 
-START_YEAR = 1984
-END_YEAR   = 2025
+START_DATE = "1984-01-01"
+END_DATE   = "2026-01-01"
 
-# River → (latitude, longitude)
 RIVER_LOCATIONS: dict[str, tuple[float, float]] = {
     "Nyengwe":    (-4.25, 29.50),
     "Buzimba":    (-4.00, 29.50),
@@ -61,54 +63,81 @@ RIVER_LOCATIONS: dict[str, tuple[float, float]] = {
     "Nyakagunda": (-2.75, 29.00),
 }
 
-BUFFER_RADIUS_M = 5000   # 5 km radius around each point
+BUFFER_RADIUS_M = 5000
 
-OUTPUT_DIR     = Path(__file__).resolve().parent.parent.parent / "data" / "outputs"
-PER_RIVER_DIR  = OUTPUT_DIR / "per_river"
-COMBINED_PATH  = OUTPUT_DIR / "jrc_surface_water_monthly.csv"
+OUTPUT_DIR    = Path(__file__).resolve().parent.parent.parent / "data" / "outputs"
+PER_RIVER_DIR = OUTPUT_DIR / "per_river"
+COMBINED_PATH = OUTPUT_DIR / "jrc_surface_water_monthly.csv"
 
 
 # ---------------------------------------------------------------------------
-# GEE helpers
+# GEE — server-side computation
 # ---------------------------------------------------------------------------
 
-def _extract_water_fraction(ee, lat: float, lon: float) -> list[dict]:
-    """Return monthly water fraction records for a buffered point."""
+def extract_water_fraction(ee, lat: float, lon: float) -> list[dict]:
+    """
+    Compute monthly water fraction for a buffered point entirely server-side.
+    Returns a list of {year, month, water_fraction, water_pixels, total_pixels}.
+    """
     point  = ee.Geometry.Point([lon, lat])
     region = point.buffer(BUFFER_RADIUS_M)
 
+    # Build a sequence of month-start dates
+    start    = ee.Date(START_DATE)
+    end      = ee.Date(END_DATE)
+    n_months = end.difference(start, "month").int()
+    offsets  = ee.List.sequence(0, n_months.subtract(1))
+
     collection = ee.ImageCollection("JRC/GSW1_4/MonthlyHistory")
 
+    def compute_month(offset):
+        month_start = start.advance(offset, "month")
+        month_end   = month_start.advance(1, "month")
+
+        # Use mosaic of the month (there is at most one image per month)
+        img = collection.filterDate(month_start, month_end).mosaic()
+
+        water = img.eq(2).rename("water")
+        valid = img.gte(1).rename("valid")
+
+        stats = water.addBands(valid).reduceRegion(
+            reducer  = ee.Reducer.sum(),
+            geometry = region,
+            scale    = 30,
+            maxPixels= 1e7,
+        )
+
+        water_px = stats.get("water")
+        valid_px = stats.get("valid")
+
+        return ee.Feature(None, {
+            "year":        month_start.get("year"),
+            "month":       month_start.get("month"),
+            "water_pixels": water_px,
+            "total_pixels": valid_px,
+        })
+
+    features = ee.FeatureCollection(offsets.map(compute_month))
+    raw = features.getInfo()["features"]
+
     rows = []
-    for year in range(START_YEAR, END_YEAR + 1):
-        for month in range(1, 13):
-            date_str = f"{year}-{month:02d}-01"
-            img = collection.filterDate(date_str, f"{year}-{month:02d}-28").first()
+    for f in raw:
+        p = f["properties"]
+        water_px = p.get("water_pixels")
+        total_px = p.get("total_pixels")
+        if water_px is not None and total_px and total_px > 0:
+            fraction = round(water_px / total_px, 6)
+        else:
+            fraction = None
+        rows.append({
+            "year":           int(p["year"]),
+            "month":          int(p["month"]),
+            "water_fraction": fraction,
+            "water_pixels":   int(water_px) if water_px is not None else None,
+            "total_pixels":   int(total_px) if total_px is not None else None,
+        })
 
-            # Water pixels = class 2; total valid pixels = class 1 or 2
-            water  = img.eq(2)
-            valid  = img.gte(1)
-
-            stats = water.reduceRegion(
-                reducer  = ee.Reducer.sum().combine(ee.Reducer.count(), sharedInputs=True),
-                geometry = region,
-                scale    = 30,
-                maxPixels= 1e7,
-            ).getInfo()
-
-            water_px = stats.get("waterClassification_sum", None)
-            total_px = stats.get("waterClassification_count", None)
-
-            fraction = (water_px / total_px) if (water_px is not None and total_px and total_px > 0) else None
-
-            rows.append({
-                "year":           year,
-                "month":          month,
-                "water_fraction": round(fraction, 6) if fraction is not None else None,
-                "water_pixels":   int(water_px) if water_px is not None else None,
-                "total_pixels":   int(total_px) if total_px is not None else None,
-            })
-
+    rows.sort(key=lambda r: (r["year"], r["month"]))
     return rows
 
 
@@ -139,10 +168,10 @@ def run() -> None:
     all_rows: list[dict] = []
 
     for i, (river, (lat, lon)) in enumerate(RIVER_LOCATIONS.items(), start=1):
-        log.info("[%d/%d] %s  (%.2f, %.2f)", i, len(RIVER_LOCATIONS), river, lat, lon)
-
+        log.info("[%d/%d] %s  (%.2f, %.2f) — computing server-side …",
+                 i, len(RIVER_LOCATIONS), river, lat, lon)
         try:
-            rows = _extract_water_fraction(ee, lat, lon)
+            rows = extract_water_fraction(ee, lat, lon)
         except Exception as exc:
             log.error("  Failed: %s", exc)
             continue
