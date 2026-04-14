@@ -94,8 +94,14 @@ def extract_water_fraction(ee, lat: float, lon: float) -> list[dict]:
         month_start = start.advance(offset, "month")
         month_end   = month_start.advance(1, "month")
 
-        # Use mosaic of the month (there is at most one image per month)
-        img = collection.filterDate(month_start, month_end).mosaic()
+        monthly_col = collection.filterDate(month_start, month_end)
+
+        # If no images exist for this month, use a zero image to avoid band errors
+        img = ee.Image(ee.Algorithms.If(
+            monthly_col.size().gt(0),
+            monthly_col.mosaic(),
+            ee.Image.constant(0).rename("waterClassification"),
+        ))
 
         water = img.eq(2).rename("water")
         valid = img.gte(1).rename("valid")
@@ -153,7 +159,7 @@ def run() -> None:
         sys.exit(1)
 
     try:
-        ee.Initialize()
+        ee.Initialize(project="first-apex-493315-s2")
     except Exception:
         log.error(
             "GEE authentication required. Run once:\n"
