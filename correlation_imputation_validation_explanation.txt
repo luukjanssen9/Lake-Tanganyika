@@ -1,0 +1,273 @@
+Correlation Imputation Validation Script Explanation
+====================================================
+
+This file explains what the correlation_imputation_validation.py script does.
+
+
+Purpose of the script
+---------------------
+
+The script creates a validation / backtesting pipeline for the existing
+correlation-based water level imputation method.
+
+The main idea is:
+
+1. Take a subset of water level values that are already known.
+2. Temporarily hide those known values only in a validation column.
+3. Run the correlation-based imputation method on that validation column.
+4. Compare the imputed values with the original true values.
+5. Calculate error metrics to evaluate the method.
+
+Important:
+The original water_level column is not modified. The original data remains
+untouched.
+
+
+Input and output files
+----------------------
+
+Input file:
+
+data/outputs/master_dataset_inputed.csv
+
+Output files:
+
+correlation_validation_results.csv
+correlation_validation_metrics.csv
+
+Script file:
+
+correlation_imputation_validation.py
+
+
+Configurable settings
+---------------------
+
+The main configurable settings are defined at the top of the script:
+
+DEFAULT_INPUT_PATH:
+Path to the input master dataset.
+
+DEFAULT_OUTPUT_RESULTS:
+Path where the full validation results CSV is saved.
+
+DEFAULT_OUTPUT_METRICS:
+Path where the validation metrics CSV is saved.
+
+DEFAULT_ORIGINAL_COL:
+The original water level column. The default is water_level.
+
+DEFAULT_VALIDATION_COL:
+The copied validation column. The default is water_level_validation.
+
+DEFAULT_IMPUTED_COL:
+The column where the correlation-imputed validation values are stored.
+The default is water_level_imputed_corr_validation.
+
+DEFAULT_MASK_COLUMN:
+A True / False column showing which rows were artificially masked.
+The default is water_level_validation_masked.
+
+DEFAULT_MASK_FRACTION:
+The percentage of known water level values to hide for validation.
+The default is 0.10, meaning 10 percent of known values are masked.
+
+DEFAULT_RANDOM_SEED:
+The fixed random seed used to make the validation mask reproducible.
+
+DEFAULT_MIN_CORR:
+The minimum correlation threshold required for a donor river to be used.
+
+DEFAULT_MIN_OVERLAP:
+The minimum number of overlapping observations required to fit a regression
+between a target river and a donor river.
+
+
+Step-by-step workflow
+---------------------
+
+1. Load the dataset
+
+The load_dataset function reads data/outputs/master_dataset_inputed.csv.
+The date column is parsed as a date column.
+
+
+2. Create a validation column
+
+The create_validation_column function copies the original water_level column
+into a new column called water_level_validation.
+
+At this stage, the original water_level column is unchanged.
+
+
+3. Artificially mask known values only in the validation column
+
+The mask_validation_values function finds rows where the original water_level
+value is already known.
+
+It randomly selects a configurable percentage of those known rows using the
+fixed random seed.
+
+For the selected rows, only water_level_validation is set to NaN.
+
+The original water_level column remains unchanged.
+
+The selected rows are also marked as True in the
+water_level_validation_masked column. This marker is later used so that
+metrics are calculated only on the artificially hidden values.
+
+
+4. Convert the data into a date x river pivot table
+
+The build_pivot function reshapes the data so that dates are rows and rivers
+are columns.
+
+This format is used to calculate correlations between rivers.
+
+
+5. Calculate correlations between rivers
+
+The compute_correlations function calculates Pearson correlations between
+river water level time series.
+
+The correlation matrix is used to decide which rivers can act as donor rivers
+for each target river.
+
+
+6. Run the correlation-based validation imputation
+
+The impute_correlation_validation function performs the main imputation step.
+
+For each target river, the script:
+
+- Finds donor rivers with the highest correlations.
+- Excludes donor rivers below the DEFAULT_MIN_CORR threshold.
+- Checks whether the target river and donor river have enough overlapping data.
+- Fits a simple linear regression between the donor river and target river.
+- Uses the donor river value at the missing validation date to predict the
+  target river value.
+- Writes the prediction to water_level_imputed_corr_validation.
+
+This process is used to fill the values that were artificially removed from
+the validation column.
+
+
+7. Calculate validation metrics
+
+The calculate_metrics function evaluates only the rows where
+water_level_validation_masked is True.
+
+If a prediction is still missing after imputation, that row is excluded from
+the metric calculation.
+
+The calculated metrics are:
+
+MAE:
+Mean Absolute Error. This shows the average absolute difference between the
+true values and the imputed values.
+
+RMSE:
+Root Mean Squared Error. This penalizes large errors more strongly than MAE.
+
+R2:
+R-squared. This shows how much of the variation in the true values is explained
+by the imputed values. Values closer to 1 are better.
+
+n_validated_points:
+The number of validation points actually used in the metric calculation.
+
+
+8. Save the results
+
+The save_results function writes two output files:
+
+correlation_validation_results.csv:
+The full validation dataframe, including the validation column, mask column,
+and correlation-imputed validation column.
+
+correlation_validation_metrics.csv:
+The metrics table containing MAE, RMSE, R2, and the number of validated points.
+
+
+How to interpret the current results
+------------------------------------
+
+The latest observed result was:
+
+method: correlation
+MAE: 0.281986
+RMSE: 0.398271
+R2: 0.634552
+n_validated_points: 323
+
+If the water level unit is meters:
+
+MAE is about 0.28 meters, which means the average error is about 28 cm.
+RMSE is about 0.40 meters, meaning larger errors increase the overall error
+to around 40 cm.
+R2 is about 0.63, so the method explains a moderate amount of the variation
+in the hidden values.
+
+This result is not poor, but it is also not very strong. The method looks
+moderate rather than highly accurate.
+
+To understand whether the correlation method is truly useful, it should be
+compared with simple baseline methods such as:
+
+- Mean imputation
+- Median imputation
+- Forward fill
+- Monthly or seasonal average imputation
+
+The correlation method is only clearly useful if it has lower MAE and RMSE,
+and higher R2, than these simple baselines.
+
+
+Note about data leakage
+-----------------------
+
+The most important rule in validation is that the hidden true values should
+not be used directly during prediction.
+
+This script protects the original data by keeping water_level unchanged and
+creating artificial missing values only in water_level_validation.
+
+Metrics are calculated only on the rows that were artificially hidden.
+
+However, one important point should be checked:
+In the current implementation, correlations and regression fitting use the
+original water_level column. This can introduce data leakage, because the
+values hidden for validation may still influence donor selection or regression
+fitting.
+
+For a stricter backtesting setup, donor selection and regression fitting should
+be based on the masked validation data instead of the full original water_level
+column.
+
+
+How to run the script
+---------------------
+
+From the project folder, run:
+
+/usr/local/bin/python3 correlation_imputation_validation.py
+
+When the script finishes, it prints the metrics table in the terminal and
+saves the two CSV output files.
+
+
+Short summary
+-------------
+
+This validation script:
+
+- Does not modify the original water_level column.
+- Creates a copied validation column called water_level_validation.
+- Randomly masks a configurable percentage of known values only in the
+  validation column.
+- Uses the correlation-based method to impute those hidden values.
+- Compares the imputed values with the original true water_level values.
+- Calculates MAE, RMSE, R2, and the number of validated points.
+- Saves the full validation results and the metrics table as separate CSV
+  files.
+
