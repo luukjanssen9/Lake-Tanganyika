@@ -1,0 +1,2 @@
+input_file,output_file,water_level_column,date_column,group_column,lag_months,created_lag_columns,row_count,column_count
+data/outputs/master_dataset_inputed.csv,data/outputs/master_dataset_with_historical_water_level_features.csv,water_level,date,river,"1, 2, 3","water_level_lag_1, water_level_lag_2, water_level_lag_3",4664,27
