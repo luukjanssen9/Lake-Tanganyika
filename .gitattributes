@@ -1,0 +1,2 @@
+static[[:space:]]map/data/hydrorivers/hydrorivers_africa.shp filter=lfs diff=lfs merge=lfs -text
+static[[:space:]]map/data/hydrorivers/hydrorivers_africa.dbf filter=lfs diff=lfs merge=lfs -text
