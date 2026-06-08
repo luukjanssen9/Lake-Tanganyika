@@ -118,7 +118,6 @@ async function main() {
   await Promise.all([
     copyOne("data/outputs/master_dataset_monthly.csv", "data/processed/master_dataset_monthly.csv"),
     copyOne("data/outputs/master_dataset_inputed.csv", "data/processed/master_dataset_inputed.csv"),
-    copyOne("basins/scripts/arima_imputed_output.csv", "data/processed/arima_imputed_output.csv"),
     copyOne("Luuk/lake_tanganyika_modeling_table.csv", "data/processed/lake_tanganyika_modeling_table.csv"),
     copyOne("data/outputs/output_manifest.csv", "data/processed/output_manifest.csv"),
     copyOne("data/outputs/dahiti/lake_tanganyika_water_level.csv", "data/processed/dahiti/lake_tanganyika_water_level.csv"),
@@ -142,10 +141,10 @@ async function main() {
 
   await Promise.all([
     copyMatching("data/outputs/jrc", "data/processed/jrc", (name) => name.endsWith(".csv")),
-    copyMatching("data/outputs/ndvi", "data/processed/ndvi", (name) => name.endsWith(".csv")),
+    copyMatching("data/outputs/ndvi", "data/processed/ndvi", (name) => name.endsWith(".csv") && name !== "ndvi_monthly.csv"),
     copyMatching("data/outputs/per_river", "data/processed/per_river", (name) => name.endsWith(".csv")),
     copyMatching("basins/maps", "images/maps", (name) => name.endsWith(".png")),
-    copyMatching("basins/scripts/arima_plots", "images/arima_plots", (name) => name.endsWith(".png")),
+    copyMatching("website/source-assets/hero", "images/hero", (name) => imageExtensions.has(path.extname(name).toLowerCase())),
   ]);
 
   manifest.sort((a, b) => a.path.localeCompare(b.path));

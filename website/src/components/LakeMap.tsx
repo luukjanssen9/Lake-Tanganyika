@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import L from "leaflet";
 import { GeoJSON, MapContainer, TileLayer, useMap } from "react-leaflet";
 import { DATA_PATHS } from "../lib/constants";
-import { loadJson } from "../lib/dataLoader";
+import { loadJson, namesMatch } from "../lib/dataLoader";
+import type { FeatureSelection } from "../lib/featureCharts";
 
 type FeatureCollection = {
   type: "FeatureCollection";
@@ -32,37 +33,51 @@ function boundsFor(features: Array<Record<string, any>>) {
   return bounds.isValid() ? bounds : null;
 }
 
+function featureRiverName(feature?: Record<string, any>) {
+  const p = feature?.properties || {};
+  return String(p.river || p.search_label || p.display_name || "").replace(/\s+(basin|river)$/i, "");
+}
+
+function featureDisplayName(feature: Record<string, any>, type: FeatureSelection["type"]) {
+  const p = feature.properties || {};
+  return String(p.display_name || `${featureRiverName(feature)} ${type}`);
+}
+
+function matchesFeature(feature: Record<string, any> | undefined, selection: FeatureSelection | null, type: FeatureSelection["type"]) {
+  if (!feature || !selection || selection.type !== type) return false;
+  return namesMatch(featureRiverName(feature), selection.name);
+}
+
 function MapController({
   basins,
   rivers,
   stations,
-  selectedRiver,
+  selectedFeature,
   selectedStation,
 }: {
   basins: FeatureCollection;
   rivers: FeatureCollection;
   stations: FeatureCollection;
-  selectedRiver: string;
+  selectedFeature: FeatureSelection | null;
   selectedStation: string;
 }) {
   const map = useMap();
-  const fitted = useRef(false);
 
   useEffect(() => {
-    if (fitted.current) return;
+    if (selectedFeature) return;
     const bounds = boundsFor([...basins.features, ...rivers.features, ...stations.features]);
     if (bounds) {
       map.fitBounds(bounds.pad(0.08), { animate: false });
-      fitted.current = true;
     }
-  }, [basins, rivers, stations, map]);
+  }, [basins, rivers, stations, selectedFeature, map]);
 
   useEffect(() => {
-    if (!selectedRiver) return;
-    const features = [...basins.features, ...rivers.features].filter((feature) => feature.properties?.river === selectedRiver);
+    if (!selectedFeature) return;
+    const source = selectedFeature.type === "basin" ? basins.features : rivers.features;
+    const features = source.filter((feature) => namesMatch(featureRiverName(feature), selectedFeature.name));
     const bounds = boundsFor(features);
     if (bounds) map.fitBounds(bounds.pad(0.12), { animate: true });
-  }, [basins, rivers, selectedRiver, map]);
+  }, [basins, rivers, selectedFeature, map]);
 
   useEffect(() => {
     if (!selectedStation) return;
@@ -76,14 +91,21 @@ function MapController({
   return null;
 }
 
-export default function LakeMap({ preview = false }: { preview?: boolean }) {
+type LakeMapProps = {
+  preview?: boolean;
+  selection?: FeatureSelection | null;
+  onSelectionChange?: (selection: FeatureSelection | null) => void;
+};
+
+export default function LakeMap({ preview = false, selection, onSelectionChange }: LakeMapProps) {
   const [basins, setBasins] = useState<FeatureCollection>(emptyCollection);
   const [rivers, setRivers] = useState<FeatureCollection>(emptyCollection);
   const [stations, setStations] = useState<FeatureCollection>(emptyCollection);
   const [warning, setWarning] = useState("");
-  const [selectedRiver, setSelectedRiver] = useState("");
+  const [internalSelection, setInternalSelection] = useState<FeatureSelection | null>(null);
   const [selectedStation, setSelectedStation] = useState("");
   const [layers, setLayers] = useState({ basins: true, rivers: true, stations: true });
+  const selectedFeature = selection !== undefined ? selection : internalSelection;
 
   useEffect(() => {
     let active = true;
@@ -120,8 +142,24 @@ export default function LakeMap({ preview = false }: { preview?: boolean }) {
       .sort((a, b) => a.localeCompare(b));
   }, [stations]);
 
+  const selectFeature = (nextSelection: FeatureSelection | null) => {
+    setInternalSelection(nextSelection);
+    onSelectionChange?.(nextSelection);
+    if (nextSelection) setSelectedStation("");
+  };
+
+  const selectFeatureFromMap = (feature: Record<string, any>, type: FeatureSelection["type"]) => {
+    const name = featureRiverName(feature);
+    if (!name) return;
+    selectFeature({
+      type,
+      name,
+      displayName: featureDisplayName(feature, type),
+    });
+  };
+
   const basinStyle = (feature?: any) => {
-    const selected = selectedRiver && feature?.properties?.river === selectedRiver;
+    const selected = matchesFeature(feature, selectedFeature, "basin");
     return {
       color: selected ? "#0b3d91" : "#2f68b1",
       weight: selected ? 3 : 1.5,
@@ -131,7 +169,7 @@ export default function LakeMap({ preview = false }: { preview?: boolean }) {
   };
 
   const riverStyle = (feature?: any) => {
-    const selected = selectedRiver && feature?.properties?.river === selectedRiver;
+    const selected = matchesFeature(feature, selectedFeature, "river");
     return {
       color: selected ? "#003f88" : "#006dba",
       weight: selected ? 4.5 : 2.8,
@@ -151,7 +189,13 @@ export default function LakeMap({ preview = false }: { preview?: boolean }) {
         <div className="map-controls">
           <label>
             River
-            <select value={selectedRiver} onChange={(event) => setSelectedRiver(event.target.value)}>
+            <select
+              value={selectedFeature?.type === "river" ? selectedFeature.name : ""}
+              onChange={(event) => {
+                const name = event.target.value;
+                selectFeature(name ? { type: "river", name, displayName: `${name} River` } : null);
+              }}
+            >
               <option value="">All rivers</option>
               {riverOptions.map((river) => (
                 <option key={river} value={river}>
@@ -197,12 +241,12 @@ export default function LakeMap({ preview = false }: { preview?: boolean }) {
             basins={basins}
             rivers={rivers}
             stations={stations}
-            selectedRiver={selectedRiver}
+            selectedFeature={selectedFeature}
             selectedStation={selectedStation}
           />
           {layers.basins ? (
             <GeoJSON
-              key={`basins-${selectedRiver}-${basins.features.length}`}
+              key={`basins-${selectedFeature?.type || "all"}-${selectedFeature?.name || "all"}-${basins.features.length}`}
               data={basins as any}
               style={basinStyle}
               onEachFeature={(feature, layer) => {
@@ -214,12 +258,13 @@ export default function LakeMap({ preview = false }: { preview?: boolean }) {
                     ["Area km2", p.area_km2],
                   ]),
                 );
+                layer.on("click", () => selectFeatureFromMap(feature, "basin"));
               }}
             />
           ) : null}
           {layers.rivers ? (
             <GeoJSON
-              key={`rivers-${selectedRiver}-${rivers.features.length}`}
+              key={`rivers-${selectedFeature?.type || "all"}-${selectedFeature?.name || "all"}-${rivers.features.length}`}
               data={rivers as any}
               style={riverStyle}
               onEachFeature={(feature, layer) => {
@@ -231,6 +276,7 @@ export default function LakeMap({ preview = false }: { preview?: boolean }) {
                     ["Geometry source", p.geometry_source],
                   ]),
                 );
+                layer.on("click", () => selectFeatureFromMap(feature, "river"));
               }}
             />
           ) : null}

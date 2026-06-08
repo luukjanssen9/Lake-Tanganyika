@@ -35,8 +35,6 @@ export const DATA_PATHS = {
   lakeModeling: "/data/processed/lake_tanganyika_modeling_table.csv",
   master: "/data/processed/master_dataset_monthly.csv",
   masterImputed: "/data/processed/master_dataset_inputed.csv",
-  arima: "/data/processed/arima_imputed_output.csv",
-  ndvi: "/data/processed/ndvi/ndvi_monthly.csv",
   jrc: "/data/processed/jrc/jrc_surface_water_monthly.csv",
   manifest: "/data/manifest.json",
   predictions: {

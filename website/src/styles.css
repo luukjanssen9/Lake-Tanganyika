@@ -220,6 +220,24 @@ img {
   align-items: stretch;
 }
 
+.intro-visual {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+}
+
+.intro-visual figcaption {
+  color: #5e6b78;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.intro-visual figcaption a {
+  text-decoration: underline;
+  text-decoration-color: #a9bac4;
+  text-underline-offset: 2px;
+}
+
 .map-preview-card {
   position: relative;
   min-height: 430px;
@@ -305,6 +323,10 @@ img {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.graph-category-tabs {
+  margin: 0 0 1rem;
 }
 
 .chart-card {
@@ -565,6 +587,16 @@ img {
   margin: 0.8rem 0 0;
   color: #52606d;
   line-height: 1.55;
+}
+
+.related-graphs-section {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.related-graphs-section .inline-head p {
+  margin: 0.3rem 0 0;
 }
 
 .toolbar {

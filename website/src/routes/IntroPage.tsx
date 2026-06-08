@@ -4,11 +4,14 @@ import PageHeader from "../components/PageHeader";
 import { assetUrl } from "../lib/dataLoader";
 
 const destinationCards = [
-  { to: "/graphs", label: "Graphs", detail: "Interactive lake, river, climate, NDVI, JRC, and ARIMA views.", icon: BarChart3 },
+  { to: "/graphs", label: "Graphs", detail: "Interactive lake, climate, remote-sensing, and processing views.", icon: BarChart3 },
   { to: "/predictions", label: "Predictions", detail: "Compare observed and predicted lake levels across forecast horizons.", icon: Timer },
   { to: "/map", label: "Map", detail: "Framed GeoJSON basin, river, and station layers with selectors.", icon: MapPinned },
   { to: "/data", label: "Data", detail: "Readable overview of the lake, river, satellite, climate, and model datasets.", icon: Database },
 ];
+
+const heroCredit =
+  "Naph, I. (n.d.). A tranquil scene of a boat on a lake near tropical beach huts and lush greenery [Photograph]. Pexels. https://www.pexels.com/photo/serene-lake-boat-near-tropical-beach-huts-35242823/";
 
 export default function IntroPage() {
   return (
@@ -20,13 +23,23 @@ export default function IntroPage() {
       />
 
       <section className="intro-grid">
-        <Link to="/map" className="map-preview-card">
-          <img src={assetUrl("/images/maps/full-basin.png")} alt="Lake Tanganyika basin overview" />
-          <span>
-            Open map
-            <ArrowRight size={18} aria-hidden="true" />
-          </span>
-        </Link>
+        <figure className="intro-visual">
+          <Link to="/map" className="map-preview-card">
+            <img
+              src={assetUrl("/images/hero/lake-tanganyika-pexels-isaac-naph.jpg")}
+              alt="Boat on Lake Tanganyika near tropical beach huts and lush greenery"
+            />
+            <span>
+              Open map
+              <ArrowRight size={18} aria-hidden="true" />
+            </span>
+          </Link>
+          <figcaption>
+            <a href="https://www.pexels.com/photo/serene-lake-boat-near-tropical-beach-huts-35242823/" target="_blank" rel="noreferrer">
+              {heroCredit}
+            </a>
+          </figcaption>
+        </figure>
 
         <div className="intro-side-panel">
           <p>

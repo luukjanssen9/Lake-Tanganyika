@@ -11,6 +11,8 @@ const emptyManifest: Manifest = {
   warnings: [],
 };
 
+const hiddenDatasetPaths = new Set(["data/processed/ndvi/ndvi_monthly.csv"]);
+
 type ResearchDataCard = {
   name: string;
   description: string;
@@ -51,10 +53,10 @@ const researchDataCards: ResearchDataCard[] = [
   },
   {
     name: "Satellite / Remote Sensing Data",
-    description: "Satellite-derived variables such as NDVI and surface-water extent used to capture environmental and seasonal patterns.",
-    source: "MODIS, JRC Global Surface Water, and processed project outputs.",
+    description: "Satellite-derived surface-water extent used to capture environmental and seasonal patterns.",
+    source: "JRC Global Surface Water and processed project outputs.",
     usedFor: "Graphs, environmental analysis, and prediction features.",
-    matchers: ["data/processed/ndvi/ndvi_monthly.csv", "data/processed/jrc/jrc_surface_water_monthly.csv"],
+    matchers: ["data/processed/jrc/jrc_surface_water_monthly.csv"],
   },
   {
     name: "Model Prediction Data",
@@ -75,7 +77,7 @@ const researchDataCards: ResearchDataCard[] = [
 
 function findFiles(files: ManifestFile[], matchers: string[]) {
   return matchers
-    .map((matcher) => files.find((file) => file.path === matcher))
+    .map((matcher) => files.find((file) => file.path === matcher && !hiddenDatasetPaths.has(file.path)))
     .filter((file): file is ManifestFile => Boolean(file));
 }
 
@@ -100,9 +102,10 @@ export default function DataPage() {
   }, []);
 
   const cards = useMemo(() => {
+    const visibleFiles = manifest.files.filter((file) => !hiddenDatasetPaths.has(file.path));
     return researchDataCards.map((card) => ({
       ...card,
-      files: findFiles(manifest.files, card.matchers),
+      files: findFiles(visibleFiles, card.matchers),
     }));
   }, [manifest.files]);
 

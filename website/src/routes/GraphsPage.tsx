@@ -1,13 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import Plot from "react-plotly.js";
+import type { ReactNode } from "react";
 import ChartCard from "../components/ChartCard";
+import FigureView from "../components/FigureView";
 import ChartModal from "../components/ChartModal";
 import PageHeader from "../components/PageHeader";
 import { DATA_PATHS, RIVERS } from "../lib/constants";
-import { Figure, figure, lineTrace, multiLineFigure } from "../lib/chartBuilders";
-import { assetUrl, CsvRow, loadCsv, monthDate, numberValue } from "../lib/dataLoader";
-
-const plotConfig = { responsive: true, displaylogo: false };
+import { figure, lineTrace, multiLineFigure } from "../lib/chartBuilders";
+import { assetUrl, CsvRow, loadCsv, monthDate } from "../lib/dataLoader";
 
 const lakeVariables = [
   { key: "lake_level_m", label: "Lake level" },
@@ -16,25 +15,25 @@ const lakeVariables = [
   { key: "lake_level_m_zscore", label: "Z-score" },
 ];
 
-const riverLevelVariables = [
-  { key: "water_level", label: "Observed level" },
-  { key: "water_level_imputed_v2", label: "Imputed level" },
-  { key: "wl_arima_imputed", label: "ARIMA-imputed level" },
-];
-
 const basinImages = [
   { path: "/images/maps/full-basin.png", label: "Full basin" },
   { path: "/images/maps/sub-basin.png", label: "Sub-basin" },
-  { path: "/images/maps/ee-chart.png", label: "Earth Engine chart" },
 ];
+
+const graphCategories = [
+  { id: "lake", label: "Lake-level graphs" },
+  { id: "climate", label: "Climate and hydrology graphs" },
+  { id: "remote", label: "Remote sensing graphs" },
+  { id: "quality", label: "Data quality / processing graphs" },
+] as const;
+
+type GraphCategory = (typeof graphCategories)[number]["id"];
 
 type GraphData = {
   dahiti: CsvRow[];
   lakeModeling: CsvRow[];
   master: CsvRow[];
   masterImputed: CsvRow[];
-  arima: CsvRow[];
-  ndvi: CsvRow[];
   jrc: CsvRow[];
 };
 
@@ -43,9 +42,16 @@ const emptyGraphData: GraphData = {
   lakeModeling: [],
   master: [],
   masterImputed: [],
-  arima: [],
-  ndvi: [],
   jrc: [],
+};
+
+type GraphCardConfig = {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: GraphCategory;
+  controls?: ReactNode;
+  content: (large?: boolean) => ReactNode;
 };
 
 function SelectControl({
@@ -73,19 +79,6 @@ function SelectControl({
   );
 }
 
-function FigureView({ fig, large = false }: { fig: Figure; large?: boolean }) {
-  if (!fig.data.length) return <p className="empty-state">No data available for this chart.</p>;
-  return (
-    <Plot
-      data={fig.data}
-      layout={fig.layout}
-      config={plotConfig}
-      useResizeHandler
-      style={{ width: "100%", height: large ? "610px" : "260px" }}
-    />
-  );
-}
-
 function ImageView({ path, alt, large = false }: { path: string; alt: string; large?: boolean }) {
   return <img className={large ? "modal-image" : "chart-image"} src={assetUrl(path)} alt={alt} />;
 }
@@ -94,14 +87,12 @@ export default function GraphsPage() {
   const [data, setData] = useState<GraphData>(emptyGraphData);
   const [warnings, setWarnings] = useState<string[]>([]);
   const [activeCard, setActiveCard] = useState<string | null>(null);
-  const [river, setRiver] = useState("Buzimba");
-  const [riverVariable, setRiverVariable] = useState("water_level");
+  const [activeCategory, setActiveCategory] = useState<GraphCategory>("lake");
   const [lakeVariable, setLakeVariable] = useState("lake_level_m");
+  const [river, setRiver] = useState("Buzimba");
   const [precipRiver, setPrecipRiver] = useState("Buzimba");
   const [tempRiver, setTempRiver] = useState("Buzimba");
-  const [ndviRiver, setNdviRiver] = useState("Buzimba");
   const [jrcRiver, setJrcRiver] = useState("Buzimba");
-  const [arimaRiver, setArimaRiver] = useState("Buzimba");
   const [basinImage, setBasinImage] = useState(basinImages[0].path);
 
   useEffect(() => {
@@ -111,21 +102,17 @@ export default function GraphsPage() {
       loadCsv(DATA_PATHS.lakeModeling),
       loadCsv(DATA_PATHS.master),
       loadCsv(DATA_PATHS.masterImputed),
-      loadCsv(DATA_PATHS.arima),
-      loadCsv(DATA_PATHS.ndvi),
       loadCsv(DATA_PATHS.jrc),
-    ]).then(([dahiti, lakeModeling, master, masterImputed, arima, ndvi, jrc]) => {
+    ]).then(([dahiti, lakeModeling, master, masterImputed, jrc]) => {
       if (!active) return;
       setData({
         dahiti: dahiti.data,
         lakeModeling: lakeModeling.data,
         master: master.data,
         masterImputed: masterImputed.data,
-        arima: arima.data,
-        ndvi: ndvi.data,
         jrc: jrc.data,
       });
-      setWarnings([dahiti.warning, lakeModeling.warning, master.warning, masterImputed.warning, arima.warning, ndvi.warning, jrc.warning].filter(Boolean) as string[]);
+      setWarnings([dahiti.warning, lakeModeling.warning, master.warning, masterImputed.warning, jrc.warning].filter(Boolean) as string[]);
     });
     return () => {
       active = false;
@@ -136,7 +123,6 @@ export default function GraphsPage() {
 
   const figures = useMemo(() => {
     const selectedLakeVariable = lakeVariables.find((item) => item.key === lakeVariable)!;
-    const selectedRiverVariable = riverLevelVariables.find((item) => item.key === riverVariable)!;
     const dahiti = figure(
       [lineTrace(data.dahiti, "water_level_m", "DAHITI lake level", { color: "#207c7a", hoverLabel: "DAHITI" })],
       "Lake Tanganyika water level",
@@ -146,12 +132,6 @@ export default function GraphsPage() {
       [lineTrace(data.lakeModeling, selectedLakeVariable.key, selectedLakeVariable.label, { color: "#2f68b1" })],
       `Lake modeling table: ${selectedLakeVariable.label}`,
       selectedLakeVariable.key.includes("zscore") ? "Standard deviations" : "Lake level (m)",
-    );
-    const riverRows = data.arima.filter((row) => row.river === river);
-    const riverLevel = figure(
-      [lineTrace(riverRows, selectedRiverVariable.key, `${river} ${selectedRiverVariable.label}`, { color: "#b24a62" })],
-      `${river} river water level`,
-      "Water level (m)",
     );
     const runoff = figure(
       [lineTrace(data.master.filter((row) => row.river === river), "runoff", `${river} runoff`, { color: "#897032" })],
@@ -180,10 +160,6 @@ export default function GraphsPage() {
       `${tempRiver} temperature`,
       "Temperature (C)",
     );
-    const ndviRows = data.ndvi
-      .filter((row) => row.river === ndviRiver)
-      .map((row) => ({ ...row, date: monthDate(row) }));
-    const ndvi = figure([lineTrace(ndviRows, "ndvi", `${ndviRiver} NDVI`, { color: "#2f855a" })], `${ndviRiver} MODIS NDVI`, "NDVI");
     const jrcRows = data.jrc
       .filter((row) => row.river === jrcRiver)
       .map((row) => ({ ...row, date: monthDate(row) }));
@@ -195,8 +171,9 @@ export default function GraphsPage() {
     const rowCounts = Object.entries({
       "DAHITI rows": data.dahiti.length,
       "Master rows": data.master.length,
+      "Imputed master rows": data.masterImputed.length,
       "Modeling rows": data.lakeModeling.length,
-      "ARIMA rows": data.arima.length,
+      "JRC rows": data.jrc.length,
     });
     const overview = figure(
       [
@@ -204,7 +181,7 @@ export default function GraphsPage() {
           type: "bar",
           x: rowCounts.map(([label]) => label),
           y: rowCounts.map(([, count]) => count),
-          marker: { color: ["#207c7a", "#2f68b1", "#897032", "#b24a62"] },
+          marker: { color: ["#207c7a", "#2f68b1", "#897032", "#b24a62", "#6e7787"] },
           hovertemplate: "%{x}<br>%{y} rows<extra></extra>",
         },
       ],
@@ -212,20 +189,22 @@ export default function GraphsPage() {
       "Rows",
     );
 
-    return { dahiti, lakeModeling, riverLevel, runoff, precipitation, temperature, ndvi, jrc, overview };
-  }, [data, lakeVariable, river, riverVariable, precipRiver, tempRiver, ndviRiver, jrcRiver]);
+    return { dahiti, lakeModeling, runoff, precipitation, temperature, jrc, overview };
+  }, [data, lakeVariable, river, precipRiver, tempRiver, jrcRiver]);
 
-  const cards = [
+  const cards: GraphCardConfig[] = [
     {
       id: "dahiti",
       title: "DAHITI lake level",
       subtitle: "Satellite altimetry series",
+      category: "lake",
       content: (large = false) => <FigureView fig={figures.dahiti} large={large} />,
     },
     {
       id: "lake-modeling",
       title: "Lake modeling series",
       subtitle: "Level, rolling mean, anomaly, or z-score",
+      category: "lake",
       controls: (
         <SelectControl
           label="Variable"
@@ -237,26 +216,10 @@ export default function GraphsPage() {
       content: (large = false) => <FigureView fig={figures.lakeModeling} large={large} />,
     },
     {
-      id: "river-level",
-      title: "River water level",
-      subtitle: "Observed, imputed, or ARIMA-imputed",
-      controls: (
-        <>
-          <SelectControl label="River" value={river} options={riverOptions} onChange={setRiver} />
-          <SelectControl
-            label="Variable"
-            value={riverVariable}
-            options={riverLevelVariables.map((item) => ({ value: item.key, label: item.label }))}
-            onChange={setRiverVariable}
-          />
-        </>
-      ),
-      content: (large = false) => <FigureView fig={figures.riverLevel} large={large} />,
-    },
-    {
       id: "runoff",
       title: "Runoff by river",
       subtitle: "Monthly runoff from the master dataset",
+      category: "climate",
       controls: <SelectControl label="River" value={river} options={riverOptions} onChange={setRiver} />,
       content: (large = false) => <FigureView fig={figures.runoff} large={large} />,
     },
@@ -264,6 +227,7 @@ export default function GraphsPage() {
       id: "precip",
       title: "Observed vs ERA5 precipitation",
       subtitle: "Monthly totals by river",
+      category: "climate",
       controls: <SelectControl label="River" value={precipRiver} options={riverOptions} onChange={setPrecipRiver} />,
       content: (large = false) => <FigureView fig={figures.precipitation} large={large} />,
     },
@@ -271,46 +235,23 @@ export default function GraphsPage() {
       id: "temperature",
       title: "Observed vs ERA5 temperature",
       subtitle: "Tmax and Tmin by river",
+      category: "climate",
       controls: <SelectControl label="River" value={tempRiver} options={riverOptions} onChange={setTempRiver} />,
       content: (large = false) => <FigureView fig={figures.temperature} large={large} />,
-    },
-    {
-      id: "ndvi",
-      title: "MODIS NDVI",
-      subtitle: "Monthly vegetation index",
-      controls: <SelectControl label="River" value={ndviRiver} options={riverOptions} onChange={setNdviRiver} />,
-      content: (large = false) => <FigureView fig={figures.ndvi} large={large} />,
     },
     {
       id: "jrc",
       title: "JRC surface water",
       subtitle: "Monthly water fraction near river mouths",
+      category: "remote",
       controls: <SelectControl label="River" value={jrcRiver} options={riverOptions} onChange={setJrcRiver} />,
       content: (large = false) => <FigureView fig={figures.jrc} large={large} />,
-    },
-    {
-      id: "missing",
-      title: "ARIMA missingness overview",
-      subtitle: "PNG output from the ARIMA workflow",
-      content: (large = false) => <ImageView path="/images/arima_plots/missing_summary.png" alt="Missing data summary" large={large} />,
-    },
-    {
-      id: "rmse",
-      title: "ARIMA RMSE comparison",
-      subtitle: "PNG output from the ARIMA workflow",
-      content: (large = false) => <ImageView path="/images/arima_plots/rmse_comparison.png" alt="ARIMA RMSE comparison" large={large} />,
-    },
-    {
-      id: "arima-river",
-      title: "ARIMA per-river plot",
-      subtitle: "Imputation chart selected by river",
-      controls: <SelectControl label="River" value={arimaRiver} options={riverOptions} onChange={setArimaRiver} />,
-      content: (large = false) => <ImageView path={`/images/arima_plots/${arimaRiver}_arima.png`} alt={`${arimaRiver} ARIMA plot`} large={large} />,
     },
     {
       id: "basin-images",
       title: "Basin overview images",
       subtitle: "Static map and Earth Engine outputs",
+      category: "remote",
       controls: (
         <SelectControl
           label="Image"
@@ -325,18 +266,21 @@ export default function GraphsPage() {
       id: "overview",
       title: "Website data sync overview",
       subtitle: "Row counts from key copied CSV files",
+      category: "quality",
       content: (large = false) => <FigureView fig={figures.overview} large={large} />,
     },
   ];
 
+  const availableCategories = graphCategories.filter((category) => cards.some((card) => card.category === category.id));
+  const visibleCards = cards.filter((card) => card.category === activeCategory);
   const active = cards.find((card) => card.id === activeCard);
 
   return (
     <>
       <PageHeader
         eyebrow="Interactive graphs"
-        title="Lake, river, climate, vegetation, and imputation views"
-        subtitle="Each card opens into a larger Plotly or image view. Data is read from the synced public CSV and PNG outputs."
+        title="Lake, climate, remote-sensing, and processing views"
+        subtitle="Choose a category to browse focused groups of Plotly graphs and supporting images. Each card opens into a larger detail view."
       />
       {warnings.length ? (
         <div className="warning-list">
@@ -345,8 +289,20 @@ export default function GraphsPage() {
           ))}
         </div>
       ) : null}
+      <div className="graph-category-tabs segmented" aria-label="Graph categories">
+        {availableCategories.map((category) => (
+          <button
+            key={category.id}
+            type="button"
+            className={activeCategory === category.id ? "active" : undefined}
+            onClick={() => setActiveCategory(category.id)}
+          >
+            {category.label}
+          </button>
+        ))}
+      </div>
       <section className="chart-grid">
-        {cards.map((card) => (
+        {visibleCards.map((card) => (
           <ChartCard
             key={card.id}
             title={card.title}

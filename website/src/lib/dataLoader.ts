@@ -128,6 +128,22 @@ export function sortByDate<T extends CsvRow>(rows: T[]) {
   return [...rows].sort((a, b) => monthDate(a).localeCompare(monthDate(b)));
 }
 
+export function normalizeName(value: unknown) {
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/[_-]+/g, " ")
+    .replace(/[^\p{L}\p{N}\s]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function namesMatch(left: unknown, right: unknown) {
+  const a = normalizeName(left);
+  const b = normalizeName(right);
+  if (!a || !b) return false;
+  return a === b || a.includes(b) || b.includes(a);
+}
+
 export function formatNumber(value: number | null | undefined, digits = 3) {
   if (value === null || value === undefined || Number.isNaN(value)) return "n/a";
   return new Intl.NumberFormat("en", { maximumFractionDigits: digits }).format(value);
