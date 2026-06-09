@@ -135,6 +135,14 @@ img {
   letter-spacing: 0;
 }
 
+.home-header {
+  max-width: 1180px;
+}
+
+.home-header h1 {
+  font-size: clamp(2.1rem, 5vw, 3.85rem);
+}
+
 .page-header p:not(.eyebrow) {
   margin: 1rem 0 0;
   color: #52606d;
@@ -690,6 +698,22 @@ img {
 .data-table td {
   color: #344251;
   overflow-wrap: anywhere;
+}
+
+.metric-table {
+  min-width: 980px;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-table th,
+.metric-table td {
+  vertical-align: middle;
+}
+
+.metric-table .numeric-cell {
+  text-align: right;
+  white-space: nowrap;
+  overflow-wrap: normal;
 }
 
 .source-table {

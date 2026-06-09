@@ -7,6 +7,17 @@ import { CsvRow, formatNumber, loadCsv, numberValue } from "../lib/dataLoader";
 
 const modelKeys = ["persistence", "seasonal_naive", "sarimax", "xgboost", "xgboost_diff"];
 
+const metricColumns = [
+  { key: "model", label: "Model", kind: "model" },
+  { key: "horizon_months", label: "Horizon", kind: "horizon" },
+  { key: "n", label: "Test months", kind: "integer" },
+  { key: "mae_m", label: "MAE (m)", kind: "meters" },
+  { key: "rmse_m", label: "RMSE (m)", kind: "meters" },
+  { key: "bias_m", label: "Bias (m)", kind: "meters" },
+  { key: "skill_vs_pers", label: "Skill vs persistence", kind: "percent" },
+  { key: "skill_vs_seasonal", label: "Skill vs seasonal", kind: "percent" },
+];
+
 type PredictionData = {
   metrics: CsvRow[];
   predictions: CsvRow[];
@@ -26,6 +37,24 @@ function bestRow(rows: CsvRow[], column: string, absolute = false) {
     const bestScore = bestValue === null ? Number.POSITIVE_INFINITY : absolute ? Math.abs(bestValue) : bestValue;
     return currentScore < bestScore ? row : best;
   }, null);
+}
+
+function formatFixed(value: number, digits: number) {
+  return new Intl.NumberFormat("en", {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  }).format(value);
+}
+
+function formatMetricCell(row: CsvRow, column: (typeof metricColumns)[number]) {
+  if (column.kind === "model") return MODEL_LABELS[row.model] || row.model || "n/a";
+  if (column.kind === "horizon") return `${row.horizon_months} month`;
+
+  const value = numberValue(row, column.key);
+  if (value === null) return "n/a";
+  if (column.kind === "integer") return formatNumber(value, 0);
+  if (column.kind === "percent") return `${formatFixed(value * 100, 1)}%`;
+  return formatFixed(value, 3);
 }
 
 export default function PredictionsPage() {
@@ -133,22 +162,26 @@ export default function PredictionsPage() {
       <section className="card table-card">
         <div className="card-head">
           <h2>Metrics table</h2>
-          <p>Selected horizon with extended skill columns when available.</p>
+          <p>Lower MAE and RMSE are better. Skill values show improvement compared with the baseline models.</p>
         </div>
         <div className="table-scroll">
-          <table className="data-table">
+          <table className="data-table metric-table">
             <thead>
               <tr>
-                {["model", "horizon_months", "n", "mae_m", "rmse_m", "bias_m", "skill_vs_pers", "skill_vs_seasonal"].map((column) => (
-                  <th key={column}>{column}</th>
+                {metricColumns.map((column) => (
+                  <th key={column.key} className={column.kind === "model" ? undefined : "numeric-cell"}>
+                    {column.label}
+                  </th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {selectedMetrics.map((row) => (
                 <tr key={`${row.model}-${row.horizon_months}`}>
-                  {["model", "horizon_months", "n", "mae_m", "rmse_m", "bias_m", "skill_vs_pers", "skill_vs_seasonal"].map((column) => (
-                    <td key={column}>{column === "model" ? MODEL_LABELS[row[column]] || row[column] : row[column]}</td>
+                  {metricColumns.map((column) => (
+                    <td key={column.key} className={column.kind === "model" ? undefined : "numeric-cell"}>
+                      {formatMetricCell(row, column)}
+                    </td>
                   ))}
                 </tr>
               ))}
