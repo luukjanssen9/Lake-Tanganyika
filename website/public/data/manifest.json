@@ -1,68 +1,68 @@
 {
-  "generatedAt": "2026-06-10T14:35:52.145Z",
-  "repositoryRoot": "/Users/gustavokoglin/MSC AI/projectLAKE/Lake-Tanganyika",
+  "generatedAt": "2026-06-10T17:06:44.813Z",
+  "repositoryRoot": "/Users/ratrag/Library/CloudStorage/OneDrive-Personal/Maastricht Study/Semester 1/Research Project S2/Lake Tanganyika/Lake-Tanganyika",
   "files": [
     {
       "path": "data/docs/data_catalog.md",
       "type": "markdown",
       "sourcePath": "Luuk/reports/data_catalog.md",
-      "modifiedTime": "2026-06-10T14:35:51.938Z",
+      "modifiedTime": "2026-06-10T17:06:44.687Z",
       "sizeBytes": 18674
     },
     {
       "path": "data/docs/data_lineage_and_dictionary.md",
       "type": "markdown",
       "sourcePath": "Luuk/reports/data_lineage_and_dictionary.md",
-      "modifiedTime": "2026-06-10T14:35:51.941Z",
+      "modifiedTime": "2026-06-10T17:06:44.689Z",
       "sizeBytes": 82112
     },
     {
       "path": "data/docs/data_README.md",
       "type": "markdown",
       "sourcePath": "data/README.md",
-      "modifiedTime": "2026-06-10T14:35:51.919Z",
+      "modifiedTime": "2026-06-10T17:06:44.681Z",
       "sizeBytes": 9102
     },
     {
       "path": "data/docs/merge_summary.md",
       "type": "markdown",
       "sourcePath": "merge_summary.md",
-      "modifiedTime": "2026-06-10T14:35:51.938Z",
+      "modifiedTime": "2026-06-10T17:06:44.686Z",
       "sizeBytes": 3782
     },
     {
       "path": "data/docs/missing_data_report.md",
       "type": "markdown",
       "sourcePath": "Luuk/reports/missing_data_report.md",
-      "modifiedTime": "2026-06-10T14:35:51.938Z",
+      "modifiedTime": "2026-06-10T17:06:44.688Z",
       "sizeBytes": 10670
     },
     {
       "path": "data/map/basins.geojson",
       "type": "geojson",
       "sourcePath": "static map/outputs/basins.geojson",
-      "modifiedTime": "2026-06-10T14:35:51.920Z",
+      "modifiedTime": "2026-06-10T17:06:44.689Z",
       "sizeBytes": 91813
     },
     {
       "path": "data/map/rivers.geojson",
       "type": "geojson",
       "sourcePath": "static map/outputs/rivers.geojson",
-      "modifiedTime": "2026-06-10T14:35:51.937Z",
+      "modifiedTime": "2026-06-10T17:06:44.682Z",
       "sizeBytes": 217218
     },
     {
       "path": "data/map/stations.geojson",
       "type": "geojson",
       "sourcePath": "static map/outputs/stations.geojson",
-      "modifiedTime": "2026-06-10T14:35:51.937Z",
+      "modifiedTime": "2026-06-10T17:06:44.686Z",
       "sizeBytes": 3218
     },
     {
       "path": "data/predictions/baseline_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/baseline_predictions.csv",
-      "modifiedTime": "2026-06-10T14:35:51.925Z",
+      "modifiedTime": "2026-06-10T17:06:44.685Z",
       "sizeBytes": 119742,
       "rowCount": 2372,
       "columns": [
@@ -77,7 +77,7 @@
       "path": "data/predictions/metrics_extended.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/metrics_extended.csv",
-      "modifiedTime": "2026-06-10T14:35:51.937Z",
+      "modifiedTime": "2026-06-10T17:06:44.683Z",
       "sizeBytes": 2360,
       "rowCount": 15,
       "columns": [
@@ -98,7 +98,7 @@
       "path": "data/predictions/model_comparison.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/model_comparison.csv",
-      "modifiedTime": "2026-06-10T14:35:51.918Z",
+      "modifiedTime": "2026-06-10T17:06:44.681Z",
       "sizeBytes": 812,
       "rowCount": 9,
       "columns": [
@@ -115,7 +115,7 @@
       "path": "data/predictions/sarimax_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/sarimax_predictions.csv",
-      "modifiedTime": "2026-06-10T14:35:51.925Z",
+      "modifiedTime": "2026-06-10T17:06:44.684Z",
       "sizeBytes": 14238,
       "rowCount": 165,
       "columns": [
@@ -132,7 +132,7 @@
       "path": "data/predictions/xgboost_diff_feature_importance.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/xgboost_diff_feature_importance.csv",
-      "modifiedTime": "2026-06-10T14:35:51.930Z",
+      "modifiedTime": "2026-06-10T17:06:44.685Z",
       "sizeBytes": 2059,
       "rowCount": 45,
       "columns": [
@@ -146,7 +146,7 @@
       "path": "data/predictions/xgboost_diff_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/xgboost_diff_predictions.csv",
-      "modifiedTime": "2026-06-10T14:35:51.929Z",
+      "modifiedTime": "2026-06-10T17:06:44.685Z",
       "sizeBytes": 16836,
       "rowCount": 176,
       "columns": [
@@ -163,7 +163,7 @@
       "path": "data/predictions/xgboost_feature_importance.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/xgboost_feature_importance.csv",
-      "modifiedTime": "2026-06-10T14:35:51.930Z",
+      "modifiedTime": "2026-06-10T17:06:44.685Z",
       "sizeBytes": 2326,
       "rowCount": 45,
       "columns": [
@@ -177,7 +177,7 @@
       "path": "data/predictions/xgboost_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/xgboost_predictions.csv",
-      "modifiedTime": "2026-06-10T14:35:51.927Z",
+      "modifiedTime": "2026-06-10T17:06:44.685Z",
       "sizeBytes": 8822,
       "rowCount": 176,
       "columns": [
@@ -192,7 +192,7 @@
       "path": "data/processed/dahiti/lake_tanganyika_water_level.csv",
       "type": "csv",
       "sourcePath": "data/outputs/dahiti/lake_tanganyika_water_level.csv",
-      "modifiedTime": "2026-06-10T14:35:51.919Z",
+      "modifiedTime": "2026-06-10T17:06:44.681Z",
       "sizeBytes": 28541,
       "rowCount": 859,
       "columns": [
@@ -205,7 +205,7 @@
       "path": "data/processed/jrc/buzimba_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/buzimba_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.958Z",
+      "modifiedTime": "2026-06-10T17:06:44.717Z",
       "sizeBytes": 12195,
       "rowCount": 504,
       "columns": [
@@ -221,7 +221,7 @@
       "path": "data/processed/jrc/jiji_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/jiji_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.995Z",
+      "modifiedTime": "2026-06-10T17:06:44.724Z",
       "sizeBytes": 10527,
       "rowCount": 504,
       "columns": [
@@ -237,7 +237,7 @@
       "path": "data/processed/jrc/jrc_surface_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/jrc_surface_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.998Z",
+      "modifiedTime": "2026-06-10T17:06:44.726Z",
       "sizeBytes": 126597,
       "rowCount": 5040,
       "columns": [
@@ -253,7 +253,7 @@
       "path": "data/processed/jrc/kaburantwa_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/kaburantwa_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.995Z",
+      "modifiedTime": "2026-06-10T17:06:44.723Z",
       "sizeBytes": 13589,
       "rowCount": 504,
       "columns": [
@@ -269,7 +269,7 @@
       "path": "data/processed/jrc/mpanda_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/mpanda_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.995Z",
+      "modifiedTime": "2026-06-10T17:06:44.724Z",
       "sizeBytes": 11497,
       "rowCount": 504,
       "columns": [
@@ -285,7 +285,7 @@
       "path": "data/processed/jrc/mulembwe_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/mulembwe_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.996Z",
+      "modifiedTime": "2026-06-10T17:06:44.724Z",
       "sizeBytes": 14497,
       "rowCount": 504,
       "columns": [
@@ -301,7 +301,7 @@
       "path": "data/processed/jrc/mutimbuzi_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/mutimbuzi_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.997Z",
+      "modifiedTime": "2026-06-10T17:06:44.725Z",
       "sizeBytes": 13002,
       "rowCount": 504,
       "columns": [
@@ -317,7 +317,7 @@
       "path": "data/processed/jrc/nyakagunda_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/nyakagunda_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.998Z",
+      "modifiedTime": "2026-06-10T17:06:44.725Z",
       "sizeBytes": 13513,
       "rowCount": 504,
       "columns": [
@@ -333,7 +333,7 @@
       "path": "data/processed/jrc/nyamagana_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/nyamagana_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.998Z",
+      "modifiedTime": "2026-06-10T17:06:44.725Z",
       "sizeBytes": 13123,
       "rowCount": 504,
       "columns": [
@@ -349,7 +349,7 @@
       "path": "data/processed/jrc/nyengwe_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/nyengwe_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.999Z",
+      "modifiedTime": "2026-06-10T17:06:44.725Z",
       "sizeBytes": 12266,
       "rowCount": 504,
       "columns": [
@@ -365,7 +365,7 @@
       "path": "data/processed/jrc/rusizi_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/rusizi_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.999Z",
+      "modifiedTime": "2026-06-10T17:06:44.726Z",
       "sizeBytes": 12910,
       "rowCount": 504,
       "columns": [
@@ -381,7 +381,7 @@
       "path": "data/processed/lake_tanganyika_modeling_table.csv",
       "type": "csv",
       "sourcePath": "Luuk/lake_tanganyika_modeling_table.csv",
-      "modifiedTime": "2026-06-10T14:35:51.936Z",
+      "modifiedTime": "2026-06-10T17:06:44.684Z",
       "sizeBytes": 687205,
       "rowCount": 403,
       "columns": [
@@ -525,7 +525,7 @@
       "path": "data/processed/master_dataset_inputed.csv",
       "type": "csv",
       "sourcePath": "data/outputs/master_dataset_inputed.csv",
-      "modifiedTime": "2026-06-10T14:35:51.939Z",
+      "modifiedTime": "2026-06-10T17:06:44.685Z",
       "sizeBytes": 1604149,
       "rowCount": 4664,
       "columns": [
@@ -562,7 +562,7 @@
       "path": "data/processed/master_dataset_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/master_dataset_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.939Z",
+      "modifiedTime": "2026-06-10T17:06:44.684Z",
       "sizeBytes": 1288849,
       "rowCount": 4664,
       "columns": [
@@ -593,7 +593,7 @@
       "path": "data/processed/ndvi/buzimba_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/buzimba_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.955Z",
+      "modifiedTime": "2026-06-10T17:06:44.720Z",
       "sizeBytes": 7075,
       "rowCount": 312,
       "columns": [
@@ -607,7 +607,7 @@
       "path": "data/processed/ndvi/jiji_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/jiji_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.955Z",
+      "modifiedTime": "2026-06-10T17:06:44.718Z",
       "sizeBytes": 6151,
       "rowCount": 312,
       "columns": [
@@ -621,7 +621,7 @@
       "path": "data/processed/ndvi/kaburantwa_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/kaburantwa_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.956Z",
+      "modifiedTime": "2026-06-10T17:06:44.726Z",
       "sizeBytes": 8011,
       "rowCount": 312,
       "columns": [
@@ -635,7 +635,7 @@
       "path": "data/processed/ndvi/mpanda_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/mpanda_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.956Z",
+      "modifiedTime": "2026-06-10T17:06:44.720Z",
       "sizeBytes": 6780,
       "rowCount": 312,
       "columns": [
@@ -649,7 +649,7 @@
       "path": "data/processed/ndvi/mulembwe_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/mulembwe_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.957Z",
+      "modifiedTime": "2026-06-10T17:06:44.722Z",
       "sizeBytes": 7387,
       "rowCount": 312,
       "columns": [
@@ -663,7 +663,7 @@
       "path": "data/processed/ndvi/mutimbuzi_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/mutimbuzi_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.957Z",
+      "modifiedTime": "2026-06-10T17:06:44.721Z",
       "sizeBytes": 7722,
       "rowCount": 312,
       "columns": [
@@ -677,7 +677,7 @@
       "path": "data/processed/ndvi/nyakagunda_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/nyakagunda_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.957Z",
+      "modifiedTime": "2026-06-10T17:06:44.722Z",
       "sizeBytes": 8027,
       "rowCount": 312,
       "columns": [
@@ -691,7 +691,7 @@
       "path": "data/processed/ndvi/nyamagana_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/nyamagana_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.958Z",
+      "modifiedTime": "2026-06-10T17:06:44.721Z",
       "sizeBytes": 7699,
       "rowCount": 312,
       "columns": [
@@ -705,7 +705,7 @@
       "path": "data/processed/ndvi/nyengwe_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/nyengwe_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.958Z",
+      "modifiedTime": "2026-06-10T17:06:44.722Z",
       "sizeBytes": 6876,
       "rowCount": 312,
       "columns": [
@@ -719,7 +719,7 @@
       "path": "data/processed/ndvi/rusizi_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/rusizi_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.960Z",
+      "modifiedTime": "2026-06-10T17:06:44.722Z",
       "sizeBytes": 6786,
       "rowCount": 312,
       "columns": [
@@ -733,7 +733,7 @@
       "path": "data/processed/output_manifest.csv",
       "type": "csv",
       "sourcePath": "data/outputs/output_manifest.csv",
-      "modifiedTime": "2026-06-10T14:35:51.920Z",
+      "modifiedTime": "2026-06-10T17:06:44.682Z",
       "sizeBytes": 499,
       "rowCount": 12,
       "columns": [
@@ -745,7 +745,7 @@
       "path": "data/processed/per_river/buzimba_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/buzimba_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.957Z",
+      "modifiedTime": "2026-06-10T17:06:44.723Z",
       "sizeBytes": 130203,
       "rowCount": 396,
       "columns": [
@@ -779,7 +779,7 @@
       "path": "data/processed/per_river/buzimba_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/buzimba_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.965Z",
+      "modifiedTime": "2026-06-10T17:06:44.730Z",
       "sizeBytes": 109714,
       "rowCount": 396,
       "columns": [
@@ -809,7 +809,7 @@
       "path": "data/processed/per_river/jiji_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/jiji_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.965Z",
+      "modifiedTime": "2026-06-10T17:06:44.731Z",
       "sizeBytes": 164483,
       "rowCount": 528,
       "columns": [
@@ -843,7 +843,7 @@
       "path": "data/processed/per_river/jiji_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/jiji_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.972Z",
+      "modifiedTime": "2026-06-10T17:06:44.730Z",
       "sizeBytes": 144613,
       "rowCount": 528,
       "columns": [
@@ -873,7 +873,7 @@
       "path": "data/processed/per_river/kaburantwa_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/kaburantwa_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.973Z",
+      "modifiedTime": "2026-06-10T17:06:44.735Z",
       "sizeBytes": 156556,
       "rowCount": 509,
       "columns": [
@@ -907,7 +907,7 @@
       "path": "data/processed/per_river/kaburantwa_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/kaburantwa_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.973Z",
+      "modifiedTime": "2026-06-10T17:06:44.734Z",
       "sizeBytes": 127304,
       "rowCount": 509,
       "columns": [
@@ -937,7 +937,7 @@
       "path": "data/processed/per_river/mpanda_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mpanda_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.981Z",
+      "modifiedTime": "2026-06-10T17:06:44.733Z",
       "sizeBytes": 58744,
       "rowCount": 191,
       "columns": [
@@ -971,7 +971,7 @@
       "path": "data/processed/per_river/mpanda_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mpanda_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.983Z",
+      "modifiedTime": "2026-06-10T17:06:44.735Z",
       "sizeBytes": 51095,
       "rowCount": 191,
       "columns": [
@@ -1001,7 +1001,7 @@
       "path": "data/processed/per_river/mulembwe_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mulembwe_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.988Z",
+      "modifiedTime": "2026-06-10T17:06:44.736Z",
       "sizeBytes": 165968,
       "rowCount": 521,
       "columns": [
@@ -1035,7 +1035,7 @@
       "path": "data/processed/per_river/mulembwe_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mulembwe_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.986Z",
+      "modifiedTime": "2026-06-10T17:06:44.736Z",
       "sizeBytes": 145895,
       "rowCount": 521,
       "columns": [
@@ -1065,7 +1065,7 @@
       "path": "data/processed/per_river/mutimbuzi_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mutimbuzi_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.986Z",
+      "modifiedTime": "2026-06-10T17:06:44.736Z",
       "sizeBytes": 138323,
       "rowCount": 431,
       "columns": [
@@ -1099,7 +1099,7 @@
       "path": "data/processed/per_river/mutimbuzi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mutimbuzi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.988Z",
+      "modifiedTime": "2026-06-10T17:06:44.739Z",
       "sizeBytes": 121369,
       "rowCount": 431,
       "columns": [
@@ -1129,7 +1129,7 @@
       "path": "data/processed/per_river/nyakagunda_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyakagunda_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.992Z",
+      "modifiedTime": "2026-06-10T17:06:44.740Z",
       "sizeBytes": 160180,
       "rowCount": 528,
       "columns": [
@@ -1163,7 +1163,7 @@
       "path": "data/processed/per_river/nyakagunda_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyakagunda_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.990Z",
+      "modifiedTime": "2026-06-10T17:06:44.740Z",
       "sizeBytes": 130127,
       "rowCount": 528,
       "columns": [
@@ -1193,7 +1193,7 @@
       "path": "data/processed/per_river/nyamagana_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyamagana_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.993Z",
+      "modifiedTime": "2026-06-10T17:06:44.740Z",
       "sizeBytes": 159198,
       "rowCount": 528,
       "columns": [
@@ -1227,7 +1227,7 @@
       "path": "data/processed/per_river/nyamagana_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyamagana_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.990Z",
+      "modifiedTime": "2026-06-10T17:06:44.741Z",
       "sizeBytes": 129741,
       "rowCount": 528,
       "columns": [
@@ -1257,7 +1257,7 @@
       "path": "data/processed/per_river/nyengwe_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyengwe_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.990Z",
+      "modifiedTime": "2026-06-10T17:06:44.741Z",
       "sizeBytes": 160713,
       "rowCount": 504,
       "columns": [
@@ -1291,7 +1291,7 @@
       "path": "data/processed/per_river/nyengwe_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyengwe_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.992Z",
+      "modifiedTime": "2026-06-10T17:06:44.741Z",
       "sizeBytes": 136492,
       "rowCount": 504,
       "columns": [
@@ -1321,7 +1321,7 @@
       "path": "data/processed/per_river/rusizi_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/rusizi_imputed_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.993Z",
+      "modifiedTime": "2026-06-10T17:06:44.743Z",
       "sizeBytes": 164378,
       "rowCount": 528,
       "columns": [
@@ -1355,7 +1355,7 @@
       "path": "data/processed/per_river/rusizi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/rusizi_monthly.csv",
-      "modifiedTime": "2026-06-10T14:35:51.994Z",
+      "modifiedTime": "2026-06-10T17:06:44.743Z",
       "sizeBytes": 143869,
       "rowCount": 528,
       "columns": [
@@ -1385,7 +1385,7 @@
       "path": "data/river_graph_outputs/ALL_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/ALL_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:51.957Z",
+      "modifiedTime": "2026-06-10T17:06:44.717Z",
       "sizeBytes": 268293,
       "rowCount": 2734,
       "columns": [
@@ -1402,7 +1402,7 @@
       "path": "data/river_graph_outputs/ALL_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/ALL_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:51.995Z",
+      "modifiedTime": "2026-06-10T17:06:44.726Z",
       "sizeBytes": 140477,
       "rowCount": 1760,
       "columns": [
@@ -1419,7 +1419,7 @@
       "path": "data/river_graph_outputs/ALL_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/ALL_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:51.994Z",
+      "modifiedTime": "2026-06-10T17:06:44.726Z",
       "sizeBytes": 84522,
       "rowCount": 2734,
       "columns": [
@@ -1432,7 +1432,7 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Buzimba_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Buzimba_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:51.994Z",
+      "modifiedTime": "2026-06-10T17:06:44.758Z",
       "sizeBytes": 17048,
       "rowCount": 168,
       "columns": [
@@ -1449,14 +1449,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Buzimba_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Buzimba_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.004Z",
+      "modifiedTime": "2026-06-10T17:06:44.758Z",
       "sizeBytes": 321593
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Jiji_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Jiji_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.000Z",
+      "modifiedTime": "2026-06-10T17:06:44.758Z",
       "sizeBytes": 29178,
       "rowCount": 300,
       "columns": [
@@ -1473,14 +1473,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Jiji_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Jiji_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.002Z",
+      "modifiedTime": "2026-06-10T17:06:44.734Z",
       "sizeBytes": 516258
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Kaburantwa_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Kaburantwa_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.001Z",
+      "modifiedTime": "2026-06-10T17:06:44.758Z",
       "sizeBytes": 31096,
       "rowCount": 300,
       "columns": [
@@ -1497,14 +1497,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Kaburantwa_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Kaburantwa_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.007Z",
+      "modifiedTime": "2026-06-10T17:06:44.758Z",
       "sizeBytes": 325693
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Mpanda_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Mpanda_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.002Z",
+      "modifiedTime": "2026-06-10T17:06:44.758Z",
       "sizeBytes": 19146,
       "rowCount": 191,
       "columns": [
@@ -1521,14 +1521,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Mpanda_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Mpanda_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.006Z",
+      "modifiedTime": "2026-06-10T17:06:44.759Z",
       "sizeBytes": 392237
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Mulembwe_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Mulembwe_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.003Z",
+      "modifiedTime": "2026-06-10T17:06:44.758Z",
       "sizeBytes": 30064,
       "rowCount": 300,
       "columns": [
@@ -1545,14 +1545,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Mulembwe_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Mulembwe_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.010Z",
+      "modifiedTime": "2026-06-10T17:06:44.760Z",
       "sizeBytes": 536200
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Mutimbuzi_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Mutimbuzi_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.006Z",
+      "modifiedTime": "2026-06-10T17:06:44.759Z",
       "sizeBytes": 31086,
       "rowCount": 299,
       "columns": [
@@ -1569,14 +1569,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Mutimbuzi_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Mutimbuzi_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.011Z",
+      "modifiedTime": "2026-06-10T17:06:44.759Z",
       "sizeBytes": 440979
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Nyakagunda_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Nyakagunda_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.007Z",
+      "modifiedTime": "2026-06-10T17:06:44.759Z",
       "sizeBytes": 31899,
       "rowCount": 300,
       "columns": [
@@ -1593,14 +1593,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Nyakagunda_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Nyakagunda_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.012Z",
+      "modifiedTime": "2026-06-10T17:06:44.760Z",
       "sizeBytes": 525683
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Nyamagana_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Nyamagana_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.008Z",
+      "modifiedTime": "2026-06-10T17:06:44.759Z",
       "sizeBytes": 31267,
       "rowCount": 300,
       "columns": [
@@ -1617,14 +1617,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Nyamagana_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Nyamagana_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.014Z",
+      "modifiedTime": "2026-06-10T17:06:44.761Z",
       "sizeBytes": 452023
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Nyengwe_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Nyengwe_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.012Z",
+      "modifiedTime": "2026-06-10T17:06:44.760Z",
       "sizeBytes": 28221,
       "rowCount": 276,
       "columns": [
@@ -1641,14 +1641,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Nyengwe_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Nyengwe_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.014Z",
+      "modifiedTime": "2026-06-10T17:06:44.760Z",
       "sizeBytes": 353297
     },
     {
       "path": "data/river_graph_outputs/imputation_uncertainty/Rusizi_imputation_uncertainty.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Rusizi_imputation_uncertainty.csv",
-      "modifiedTime": "2026-06-10T14:35:52.013Z",
+      "modifiedTime": "2026-06-10T17:06:44.760Z",
       "sizeBytes": 20037,
       "rowCount": 300,
       "columns": [
@@ -1665,14 +1665,14 @@
       "path": "data/river_graph_outputs/imputation_uncertainty/Rusizi_imputation_uncertainty.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/imputation_uncertainty/Rusizi_imputation_uncertainty.png",
-      "modifiedTime": "2026-06-10T14:35:52.018Z",
+      "modifiedTime": "2026-06-10T17:06:44.760Z",
       "sizeBytes": 345812
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Buzimba_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Buzimba_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:51.999Z",
+      "modifiedTime": "2026-06-10T17:06:44.730Z",
       "sizeBytes": 14413,
       "rowCount": 176,
       "columns": [
@@ -1689,7 +1689,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.015Z",
+      "modifiedTime": "2026-06-10T17:06:44.745Z",
       "sizeBytes": 5048,
       "rowCount": 61,
       "columns": [
@@ -1706,14 +1706,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.019Z",
+      "modifiedTime": "2026-06-10T17:06:44.747Z",
       "sizeBytes": 342809
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.015Z",
+      "modifiedTime": "2026-06-10T17:06:44.746Z",
       "sizeBytes": 4868,
       "rowCount": 59,
       "columns": [
@@ -1730,14 +1730,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.021Z",
+      "modifiedTime": "2026-06-10T17:06:44.746Z",
       "sizeBytes": 347644
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.017Z",
+      "modifiedTime": "2026-06-10T17:06:44.746Z",
       "sizeBytes": 4635,
       "rowCount": 56,
       "columns": [
@@ -1754,14 +1754,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Buzimba_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.022Z",
+      "modifiedTime": "2026-06-10T17:06:44.746Z",
       "sizeBytes": 334162
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Jiji_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Jiji_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.019Z",
+      "modifiedTime": "2026-06-10T17:06:44.747Z",
       "sizeBytes": 13855,
       "rowCount": 176,
       "columns": [
@@ -1778,7 +1778,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Jiji_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Jiji_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.019Z",
+      "modifiedTime": "2026-06-10T17:06:44.747Z",
       "sizeBytes": 4845,
       "rowCount": 61,
       "columns": [
@@ -1795,14 +1795,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Jiji_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Jiji_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.033Z",
+      "modifiedTime": "2026-06-10T17:06:44.747Z",
       "sizeBytes": 381935
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Jiji_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Jiji_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.027Z",
+      "modifiedTime": "2026-06-10T17:06:44.747Z",
       "sizeBytes": 4697,
       "rowCount": 59,
       "columns": [
@@ -1819,14 +1819,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Jiji_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Jiji_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.036Z",
+      "modifiedTime": "2026-06-10T17:06:44.747Z",
       "sizeBytes": 370514
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Jiji_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Jiji_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.022Z",
+      "modifiedTime": "2026-06-10T17:06:44.748Z",
       "sizeBytes": 4451,
       "rowCount": 56,
       "columns": [
@@ -1843,14 +1843,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Jiji_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Jiji_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.036Z",
+      "modifiedTime": "2026-06-10T17:06:44.748Z",
       "sizeBytes": 360560
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.033Z",
+      "modifiedTime": "2026-06-10T17:06:44.748Z",
       "sizeBytes": 14547,
       "rowCount": 176,
       "columns": [
@@ -1867,7 +1867,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.028Z",
+      "modifiedTime": "2026-06-10T17:06:44.748Z",
       "sizeBytes": 5095,
       "rowCount": 61,
       "columns": [
@@ -1884,14 +1884,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.040Z",
+      "modifiedTime": "2026-06-10T17:06:44.750Z",
       "sizeBytes": 321898
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.038Z",
+      "modifiedTime": "2026-06-10T17:06:44.748Z",
       "sizeBytes": 4920,
       "rowCount": 59,
       "columns": [
@@ -1908,14 +1908,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.043Z",
+      "modifiedTime": "2026-06-10T17:06:44.749Z",
       "sizeBytes": 326348
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.039Z",
+      "modifiedTime": "2026-06-10T17:06:44.750Z",
       "sizeBytes": 4670,
       "rowCount": 56,
       "columns": [
@@ -1932,14 +1932,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Kaburantwa_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.044Z",
+      "modifiedTime": "2026-06-10T17:06:44.750Z",
       "sizeBytes": 316159
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mpanda_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mpanda_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.039Z",
+      "modifiedTime": "2026-06-10T17:06:44.748Z",
       "sizeBytes": 13928,
       "rowCount": 176,
       "columns": [
@@ -1956,7 +1956,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.040Z",
+      "modifiedTime": "2026-06-10T17:06:44.749Z",
       "sizeBytes": 4888,
       "rowCount": 61,
       "columns": [
@@ -1973,14 +1973,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.043Z",
+      "modifiedTime": "2026-06-10T17:06:44.749Z",
       "sizeBytes": 321013
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.041Z",
+      "modifiedTime": "2026-06-10T17:06:44.749Z",
       "sizeBytes": 4713,
       "rowCount": 59,
       "columns": [
@@ -1997,14 +1997,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.044Z",
+      "modifiedTime": "2026-06-10T17:06:44.750Z",
       "sizeBytes": 315041
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.045Z",
+      "modifiedTime": "2026-06-10T17:06:44.750Z",
       "sizeBytes": 4465,
       "rowCount": 56,
       "columns": [
@@ -2021,14 +2021,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mpanda_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.046Z",
+      "modifiedTime": "2026-06-10T17:06:44.750Z",
       "sizeBytes": 309485
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.044Z",
+      "modifiedTime": "2026-06-10T17:06:44.751Z",
       "sizeBytes": 14302,
       "rowCount": 176,
       "columns": [
@@ -2045,7 +2045,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.045Z",
+      "modifiedTime": "2026-06-10T17:06:44.750Z",
       "sizeBytes": 5017,
       "rowCount": 61,
       "columns": [
@@ -2062,14 +2062,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.047Z",
+      "modifiedTime": "2026-06-10T17:06:44.751Z",
       "sizeBytes": 350519
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.045Z",
+      "modifiedTime": "2026-06-10T17:06:44.751Z",
       "sizeBytes": 4834,
       "rowCount": 59,
       "columns": [
@@ -2086,14 +2086,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.049Z",
+      "modifiedTime": "2026-06-10T17:06:44.752Z",
       "sizeBytes": 350947
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.045Z",
+      "modifiedTime": "2026-06-10T17:06:44.751Z",
       "sizeBytes": 4589,
       "rowCount": 56,
       "columns": [
@@ -2110,14 +2110,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mulembwe_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.057Z",
+      "modifiedTime": "2026-06-10T17:06:44.752Z",
       "sizeBytes": 347356
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.048Z",
+      "modifiedTime": "2026-06-10T17:06:44.751Z",
       "sizeBytes": 14419,
       "rowCount": 176,
       "columns": [
@@ -2134,7 +2134,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.048Z",
+      "modifiedTime": "2026-06-10T17:06:44.751Z",
       "sizeBytes": 5063,
       "rowCount": 61,
       "columns": [
@@ -2151,14 +2151,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.065Z",
+      "modifiedTime": "2026-06-10T17:06:44.752Z",
       "sizeBytes": 342732
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.048Z",
+      "modifiedTime": "2026-06-10T17:06:44.752Z",
       "sizeBytes": 4881,
       "rowCount": 59,
       "columns": [
@@ -2175,14 +2175,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.066Z",
+      "modifiedTime": "2026-06-10T17:06:44.752Z",
       "sizeBytes": 327213
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.050Z",
+      "modifiedTime": "2026-06-10T17:06:44.752Z",
       "sizeBytes": 4613,
       "rowCount": 56,
       "columns": [
@@ -2199,14 +2199,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Mutimbuzi_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.066Z",
+      "modifiedTime": "2026-06-10T17:06:44.753Z",
       "sizeBytes": 334488
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.058Z",
+      "modifiedTime": "2026-06-10T17:06:44.753Z",
       "sizeBytes": 14892,
       "rowCount": 176,
       "columns": [
@@ -2223,7 +2223,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.059Z",
+      "modifiedTime": "2026-06-10T17:06:44.753Z",
       "sizeBytes": 5218,
       "rowCount": 61,
       "columns": [
@@ -2240,14 +2240,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.075Z",
+      "modifiedTime": "2026-06-10T17:06:44.754Z",
       "sizeBytes": 385711
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.066Z",
+      "modifiedTime": "2026-06-10T17:06:44.753Z",
       "sizeBytes": 5027,
       "rowCount": 59,
       "columns": [
@@ -2264,14 +2264,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.077Z",
+      "modifiedTime": "2026-06-10T17:06:44.753Z",
       "sizeBytes": 373169
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.067Z",
+      "modifiedTime": "2026-06-10T17:06:44.753Z",
       "sizeBytes": 4785,
       "rowCount": 56,
       "columns": [
@@ -2288,14 +2288,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyakagunda_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.078Z",
+      "modifiedTime": "2026-06-10T17:06:44.754Z",
       "sizeBytes": 368112
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.068Z",
+      "modifiedTime": "2026-06-10T17:06:44.753Z",
       "sizeBytes": 14651,
       "rowCount": 176,
       "columns": [
@@ -2312,7 +2312,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.069Z",
+      "modifiedTime": "2026-06-10T17:06:44.754Z",
       "sizeBytes": 5139,
       "rowCount": 61,
       "columns": [
@@ -2329,14 +2329,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.079Z",
+      "modifiedTime": "2026-06-10T17:06:44.755Z",
       "sizeBytes": 326410
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.077Z",
+      "modifiedTime": "2026-06-10T17:06:44.754Z",
       "sizeBytes": 4959,
       "rowCount": 59,
       "columns": [
@@ -2353,14 +2353,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.085Z",
+      "modifiedTime": "2026-06-10T17:06:44.755Z",
       "sizeBytes": 355861
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.080Z",
+      "modifiedTime": "2026-06-10T17:06:44.754Z",
       "sizeBytes": 4691,
       "rowCount": 56,
       "columns": [
@@ -2377,14 +2377,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyamagana_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.085Z",
+      "modifiedTime": "2026-06-10T17:06:44.755Z",
       "sizeBytes": 375515
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.080Z",
+      "modifiedTime": "2026-06-10T17:06:44.754Z",
       "sizeBytes": 14394,
       "rowCount": 176,
       "columns": [
@@ -2401,7 +2401,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.081Z",
+      "modifiedTime": "2026-06-10T17:06:44.755Z",
       "sizeBytes": 5053,
       "rowCount": 61,
       "columns": [
@@ -2418,14 +2418,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.085Z",
+      "modifiedTime": "2026-06-10T17:06:44.756Z",
       "sizeBytes": 323618
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.082Z",
+      "modifiedTime": "2026-06-10T17:06:44.755Z",
       "sizeBytes": 4872,
       "rowCount": 59,
       "columns": [
@@ -2442,14 +2442,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.088Z",
+      "modifiedTime": "2026-06-10T17:06:44.756Z",
       "sizeBytes": 298148
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.082Z",
+      "modifiedTime": "2026-06-10T17:06:44.756Z",
       "sizeBytes": 4607,
       "rowCount": 56,
       "columns": [
@@ -2466,14 +2466,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Nyengwe_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.087Z",
+      "modifiedTime": "2026-06-10T17:06:44.757Z",
       "sizeBytes": 297730
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Rusizi_prediction_forecasts.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Rusizi_prediction_forecasts.csv",
-      "modifiedTime": "2026-06-10T14:35:52.086Z",
+      "modifiedTime": "2026-06-10T17:06:44.756Z",
       "sizeBytes": 11697,
       "rowCount": 176,
       "columns": [
@@ -2490,7 +2490,7 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h1_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h1_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.086Z",
+      "modifiedTime": "2026-06-10T17:06:44.757Z",
       "sizeBytes": 4110,
       "rowCount": 61,
       "columns": [
@@ -2507,14 +2507,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h1_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h1_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.088Z",
+      "modifiedTime": "2026-06-10T17:06:44.757Z",
       "sizeBytes": 325352
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h3_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h3_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.086Z",
+      "modifiedTime": "2026-06-10T17:06:44.757Z",
       "sizeBytes": 3966,
       "rowCount": 59,
       "columns": [
@@ -2531,14 +2531,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h3_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h3_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.089Z",
+      "modifiedTime": "2026-06-10T17:06:44.757Z",
       "sizeBytes": 303920
     },
     {
       "path": "data/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h6_months.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h6_months.csv",
-      "modifiedTime": "2026-06-10T14:35:52.090Z",
+      "modifiedTime": "2026-06-10T17:06:44.757Z",
       "sizeBytes": 3759,
       "rowCount": 56,
       "columns": [
@@ -2555,14 +2555,14 @@
       "path": "data/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h6_months.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/prediction_forecasts/Rusizi_prediction_h6_months.png",
-      "modifiedTime": "2026-06-10T14:35:52.091Z",
+      "modifiedTime": "2026-06-10T17:06:44.758Z",
       "sizeBytes": 296447
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Buzimba_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Buzimba_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:51.999Z",
+      "modifiedTime": "2026-06-10T17:06:44.726Z",
       "sizeBytes": 5653,
       "rowCount": 168,
       "columns": [
@@ -2575,14 +2575,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Buzimba_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Buzimba_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.094Z",
+      "modifiedTime": "2026-06-10T17:06:44.742Z",
       "sizeBytes": 266453
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Jiji_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Jiji_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.090Z",
+      "modifiedTime": "2026-06-10T17:06:44.742Z",
       "sizeBytes": 10189,
       "rowCount": 300,
       "columns": [
@@ -2595,14 +2595,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Jiji_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Jiji_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.099Z",
+      "modifiedTime": "2026-06-10T17:06:44.742Z",
       "sizeBytes": 495429
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Kaburantwa_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Kaburantwa_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.092Z",
+      "modifiedTime": "2026-06-10T17:06:44.742Z",
       "sizeBytes": 10029,
       "rowCount": 300,
       "columns": [
@@ -2615,14 +2615,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Kaburantwa_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Kaburantwa_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.098Z",
+      "modifiedTime": "2026-06-10T17:06:44.743Z",
       "sizeBytes": 282098
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Mpanda_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Mpanda_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.092Z",
+      "modifiedTime": "2026-06-10T17:06:44.743Z",
       "sizeBytes": 6586,
       "rowCount": 191,
       "columns": [
@@ -2635,14 +2635,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Mpanda_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Mpanda_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.101Z",
+      "modifiedTime": "2026-06-10T17:06:44.744Z",
       "sizeBytes": 355470
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Mulembwe_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Mulembwe_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.095Z",
+      "modifiedTime": "2026-06-10T17:06:44.743Z",
       "sizeBytes": 10616,
       "rowCount": 300,
       "columns": [
@@ -2655,14 +2655,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Mulembwe_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Mulembwe_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.105Z",
+      "modifiedTime": "2026-06-10T17:06:44.745Z",
       "sizeBytes": 461399
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Mutimbuzi_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Mutimbuzi_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.101Z",
+      "modifiedTime": "2026-06-10T17:06:44.743Z",
       "sizeBytes": 8379,
       "rowCount": 299,
       "columns": [
@@ -2675,14 +2675,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Mutimbuzi_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Mutimbuzi_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.108Z",
+      "modifiedTime": "2026-06-10T17:06:44.744Z",
       "sizeBytes": 260514
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Nyakagunda_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Nyakagunda_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.101Z",
+      "modifiedTime": "2026-06-10T17:06:44.743Z",
       "sizeBytes": 9361,
       "rowCount": 300,
       "columns": [
@@ -2695,14 +2695,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Nyakagunda_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Nyakagunda_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.111Z",
+      "modifiedTime": "2026-06-10T17:06:44.744Z",
       "sizeBytes": 348560
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Nyamagana_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Nyamagana_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.101Z",
+      "modifiedTime": "2026-06-10T17:06:44.744Z",
       "sizeBytes": 9580,
       "rowCount": 300,
       "columns": [
@@ -2715,14 +2715,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Nyamagana_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Nyamagana_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.109Z",
+      "modifiedTime": "2026-06-10T17:06:44.745Z",
       "sizeBytes": 328844
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Nyengwe_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Nyengwe_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.109Z",
+      "modifiedTime": "2026-06-10T17:06:44.745Z",
       "sizeBytes": 7886,
       "rowCount": 276,
       "columns": [
@@ -2735,14 +2735,14 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Nyengwe_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Nyengwe_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.109Z",
+      "modifiedTime": "2026-06-10T17:06:44.745Z",
       "sizeBytes": 254342
     },
     {
       "path": "data/river_graph_outputs/raw_no_imputation/Rusizi_raw_no_imputation.csv",
       "type": "csv",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Rusizi_raw_no_imputation.csv",
-      "modifiedTime": "2026-06-10T14:35:52.106Z",
+      "modifiedTime": "2026-06-10T17:06:44.746Z",
       "sizeBytes": 6486,
       "rowCount": 300,
       "columns": [
@@ -2755,28 +2755,28 @@
       "path": "data/river_graph_outputs/raw_no_imputation/Rusizi_raw_no_imputation.png",
       "type": "image",
       "sourcePath": "per river/river_graph_outputs/raw_no_imputation/Rusizi_raw_no_imputation.png",
-      "modifiedTime": "2026-06-10T14:35:52.110Z",
+      "modifiedTime": "2026-06-10T17:06:44.745Z",
       "sizeBytes": 274790
     },
     {
       "path": "images/hero/lake-tanganyika-pexels-isaac-naph.jpg",
       "type": "image",
       "sourcePath": "website/source-assets/hero/lake-tanganyika-pexels-isaac-naph.jpg",
-      "modifiedTime": "2026-06-10T14:35:51.981Z",
+      "modifiedTime": "2026-06-10T17:06:44.719Z",
       "sizeBytes": 2120783
     },
     {
       "path": "images/maps/full-basin.png",
       "type": "image",
       "sourcePath": "basins/maps/full-basin.png",
-      "modifiedTime": "2026-06-10T14:35:51.984Z",
+      "modifiedTime": "2026-06-10T17:06:44.736Z",
       "sizeBytes": 3173853
     },
     {
       "path": "images/maps/sub-basin.png",
       "type": "image",
       "sourcePath": "basins/maps/sub-basin.png",
-      "modifiedTime": "2026-06-10T14:35:52.000Z",
+      "modifiedTime": "2026-06-10T17:06:44.723Z",
       "sizeBytes": 671327
     }
   ],
