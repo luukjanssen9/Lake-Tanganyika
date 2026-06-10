@@ -4,9 +4,12 @@ import ChartCard from "../components/ChartCard";
 import FigureView from "../components/FigureView";
 import ChartModal from "../components/ChartModal";
 import PageHeader from "../components/PageHeader";
+import RiverOutputView from "../components/RiverOutputView";
 import { DATA_PATHS, RIVERS } from "../lib/constants";
 import { figure, lineTrace, multiLineFigure } from "../lib/chartBuilders";
 import { assetUrl, CsvRow, loadCsv, monthDate } from "../lib/dataLoader";
+import { buildRiverOutputChart, emptyRiverOutputData, riverOutputTypes } from "../lib/riverAnalysis";
+import type { RiverOutputData, RiverOutputType } from "../lib/riverAnalysis";
 
 const lakeVariables = [
   { key: "lake_level_m", label: "Lake level" },
@@ -24,6 +27,7 @@ const graphCategories = [
   { id: "lake", label: "Lake-level graphs" },
   { id: "climate", label: "Climate and hydrology graphs" },
   { id: "remote", label: "Remote sensing graphs" },
+  { id: "river", label: "River analysis" },
   { id: "quality", label: "Data quality / processing graphs" },
 ] as const;
 
@@ -35,6 +39,7 @@ type GraphData = {
   master: CsvRow[];
   masterImputed: CsvRow[];
   jrc: CsvRow[];
+  riverOutputs: RiverOutputData;
 };
 
 const emptyGraphData: GraphData = {
@@ -43,6 +48,7 @@ const emptyGraphData: GraphData = {
   master: [],
   masterImputed: [],
   jrc: [],
+  riverOutputs: emptyRiverOutputData,
 };
 
 type GraphCardConfig = {
@@ -50,6 +56,7 @@ type GraphCardConfig = {
   title: string;
   subtitle: string;
   category: GraphCategory;
+  className?: string;
   controls?: ReactNode;
   content: (large?: boolean) => ReactNode;
 };
@@ -93,6 +100,9 @@ export default function GraphsPage() {
   const [precipRiver, setPrecipRiver] = useState("Buzimba");
   const [tempRiver, setTempRiver] = useState("Buzimba");
   const [jrcRiver, setJrcRiver] = useState("Buzimba");
+  const [riverAnalysisRiver, setRiverAnalysisRiver] = useState("Buzimba");
+  const [riverOutputType, setRiverOutputType] = useState<RiverOutputType>("raw");
+  const [riverForecastHorizon, setRiverForecastHorizon] = useState(1);
   const [basinImage, setBasinImage] = useState(basinImages[0].path);
 
   useEffect(() => {
@@ -103,7 +113,10 @@ export default function GraphsPage() {
       loadCsv(DATA_PATHS.master),
       loadCsv(DATA_PATHS.masterImputed),
       loadCsv(DATA_PATHS.jrc),
-    ]).then(([dahiti, lakeModeling, master, masterImputed, jrc]) => {
+      loadCsv(DATA_PATHS.riverOutputs.raw),
+      loadCsv(DATA_PATHS.riverOutputs.imputation),
+      loadCsv(DATA_PATHS.riverOutputs.forecasts),
+    ]).then(([dahiti, lakeModeling, master, masterImputed, jrc, riverRaw, riverImputation, riverForecasts]) => {
       if (!active) return;
       setData({
         dahiti: dahiti.data,
@@ -111,8 +124,24 @@ export default function GraphsPage() {
         master: master.data,
         masterImputed: masterImputed.data,
         jrc: jrc.data,
+        riverOutputs: {
+          raw: riverRaw.data,
+          imputation: riverImputation.data,
+          forecasts: riverForecasts.data,
+        },
       });
-      setWarnings([dahiti.warning, lakeModeling.warning, master.warning, masterImputed.warning, jrc.warning].filter(Boolean) as string[]);
+      setWarnings(
+        [
+          dahiti.warning,
+          lakeModeling.warning,
+          master.warning,
+          masterImputed.warning,
+          jrc.warning,
+          riverRaw.warning,
+          riverImputation.warning,
+          riverForecasts.warning,
+        ].filter(Boolean) as string[],
+      );
     });
     return () => {
       active = false;
@@ -188,9 +217,10 @@ export default function GraphsPage() {
       "Copied dataset row counts",
       "Rows",
     );
+    const riverAnalysis = buildRiverOutputChart(riverOutputType, riverAnalysisRiver, data.riverOutputs, riverForecastHorizon);
 
-    return { dahiti, lakeModeling, runoff, precipitation, temperature, jrc, overview };
-  }, [data, lakeVariable, river, precipRiver, tempRiver, jrcRiver]);
+    return { dahiti, lakeModeling, runoff, precipitation, temperature, jrc, overview, riverAnalysis };
+  }, [data, lakeVariable, river, precipRiver, tempRiver, jrcRiver, riverAnalysisRiver, riverOutputType, riverForecastHorizon]);
 
   const cards: GraphCardConfig[] = [
     {
@@ -250,7 +280,7 @@ export default function GraphsPage() {
     {
       id: "basin-images",
       title: "Basin overview images",
-      subtitle: "Static map and Earth Engine outputs",
+      subtitle: "Static map outputs",
       category: "remote",
       controls: (
         <SelectControl
@@ -261,6 +291,33 @@ export default function GraphsPage() {
         />
       ),
       content: (large = false) => <ImageView path={basinImage} alt="Basin overview" large={large} />,
+    },
+    {
+      id: "river-analysis",
+      title: figures.riverAnalysis.title,
+      subtitle: figures.riverAnalysis.subtitle,
+      category: "river",
+      className: "chart-card--wide",
+      controls: (
+        <>
+          <SelectControl label="River" value={riverAnalysisRiver} options={riverOptions} onChange={setRiverAnalysisRiver} />
+          <SelectControl
+            label="Output type"
+            value={riverOutputType}
+            options={riverOutputTypes.map((item) => ({ value: item.value, label: item.label }))}
+            onChange={(value) => setRiverOutputType(value as RiverOutputType)}
+          />
+          {riverOutputType === "forecast" ? (
+            <SelectControl
+              label="Horizon"
+              value={String(riverForecastHorizon)}
+              options={[1, 3, 6].map((item) => ({ value: String(item), label: `${item} month` }))}
+              onChange={(value) => setRiverForecastHorizon(Number(value))}
+            />
+          ) : null}
+        </>
+      ),
+      content: (large = false) => <RiverOutputView chart={figures.riverAnalysis} large={large} height={large ? 610 : 430} />,
     },
     {
       id: "overview",
@@ -307,6 +364,7 @@ export default function GraphsPage() {
             key={card.id}
             title={card.title}
             subtitle={card.subtitle}
+            className={card.className}
             controls={card.controls}
             onOpen={() => setActiveCard(card.id)}
           >

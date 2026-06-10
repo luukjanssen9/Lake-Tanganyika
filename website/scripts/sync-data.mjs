@@ -17,6 +17,7 @@ const warnings = [];
 const csvExtensions = new Set([".csv"]);
 const imageExtensions = new Set([".png", ".jpg", ".jpeg", ".webp"]);
 const geoExtensions = new Set([".geojson", ".json"]);
+const ignoredNames = new Set([".DS_Store", "__MACOSX"]);
 
 function toPublicPath(absPath) {
   return path.relative(publicRoot, absPath).split(path.sep).join("/");
@@ -112,6 +113,34 @@ async function copyMatching(sourceDirRel, destDirRel, predicate) {
   );
 }
 
+function shouldIgnoreEntry(name) {
+  return ignoredNames.has(name) || name.startsWith("._");
+}
+
+async function copyTree(sourceDirRel, destDirRel, predicate) {
+  const sourceDirAbs = path.join(repoRoot, sourceDirRel);
+  let entries = [];
+
+  try {
+    entries = await readdir(sourceDirAbs, { withFileTypes: true });
+  } catch {
+    warnings.push(`Missing directory: ${sourceDirRel}`);
+    return;
+  }
+
+  await Promise.all(
+    entries
+      .filter((entry) => !shouldIgnoreEntry(entry.name))
+      .map((entry) => {
+        const sourceRel = path.join(sourceDirRel, entry.name);
+        const destRel = path.join(destDirRel, entry.name);
+        if (entry.isDirectory()) return copyTree(sourceRel, destRel, predicate);
+        if (entry.isFile() && predicate(entry.name)) return copyOne(sourceRel, destRel);
+        return Promise.resolve();
+      }),
+  );
+}
+
 async function main() {
   await ensureCleanPublicData();
 
@@ -143,6 +172,10 @@ async function main() {
     copyMatching("data/outputs/jrc", "data/processed/jrc", (name) => name.endsWith(".csv")),
     copyMatching("data/outputs/ndvi", "data/processed/ndvi", (name) => name.endsWith(".csv") && name !== "ndvi_monthly.csv"),
     copyMatching("data/outputs/per_river", "data/processed/per_river", (name) => name.endsWith(".csv")),
+    copyTree("per river/river_graph_outputs", "data/river_graph_outputs", (name) => {
+      const ext = path.extname(name).toLowerCase();
+      return csvExtensions.has(ext) || imageExtensions.has(ext);
+    }),
     copyMatching("basins/maps", "images/maps", (name) => name.endsWith(".png")),
     copyMatching("website/source-assets/hero", "images/hero", (name) => imageExtensions.has(path.extname(name).toLowerCase())),
   ]);

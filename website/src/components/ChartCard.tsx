@@ -5,13 +5,14 @@ type ChartCardProps = {
   title: string;
   subtitle?: string;
   children: ReactNode;
+  className?: string;
   controls?: ReactNode;
   onOpen?: () => void;
 };
 
-export default function ChartCard({ title, subtitle, children, controls, onOpen }: ChartCardProps) {
+export default function ChartCard({ title, subtitle, children, className, controls, onOpen }: ChartCardProps) {
   return (
-    <article className="chart-card">
+    <article className={["chart-card", className].filter(Boolean).join(" ")}>
       <div className="chart-card__top">
         <div>
           <h2>{title}</h2>

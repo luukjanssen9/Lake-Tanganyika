@@ -36,6 +36,11 @@ export const DATA_PATHS = {
   master: "/data/processed/master_dataset_monthly.csv",
   masterImputed: "/data/processed/master_dataset_inputed.csv",
   jrc: "/data/processed/jrc/jrc_surface_water_monthly.csv",
+  riverOutputs: {
+    raw: "/data/river_graph_outputs/ALL_raw_no_imputation.csv",
+    imputation: "/data/river_graph_outputs/ALL_imputation_uncertainty.csv",
+    forecasts: "/data/river_graph_outputs/ALL_prediction_forecasts.csv",
+  },
   manifest: "/data/manifest.json",
   predictions: {
     modelComparison: "/data/predictions/model_comparison.csv",

@@ -17,7 +17,9 @@ export function lineTrace(
   name: string,
   options: { color?: string; xKey?: string; hoverLabel?: string; dash?: string } = {},
 ): Trace {
-  const ordered = sortByDate(rows);
+  const ordered = options.xKey
+    ? [...rows].sort((a, b) => String(a[options.xKey!] || "").localeCompare(String(b[options.xKey!] || "")))
+    : sortByDate(rows);
   const yValues = ordered.map((row) => numberValue(row, yKey));
   const xValues = ordered.map((row) => (options.xKey ? row[options.xKey] : monthDate(row)));
   const riverValues = ordered.map((row) => row.river || "");

@@ -4,15 +4,19 @@ import ChartModal from "../components/ChartModal";
 import FigureView from "../components/FigureView";
 import LakeMap from "../components/LakeMap";
 import PageHeader from "../components/PageHeader";
+import RiverOutputView from "../components/RiverOutputView";
 import { DATA_PATHS } from "../lib/constants";
 import { CsvRow, loadCsv } from "../lib/dataLoader";
 import { buildRelatedFeatureCharts } from "../lib/featureCharts";
 import type { FeatureSelection } from "../lib/featureCharts";
+import { buildRiverOutputChartsForRiver, emptyRiverOutputData, hasRiverOutputData } from "../lib/riverAnalysis";
+import type { RiverOutputChart, RiverOutputData } from "../lib/riverAnalysis";
 
 const emptyRelatedData = {
   master: [] as CsvRow[],
   masterImputed: [] as CsvRow[],
   jrc: [] as CsvRow[],
+  riverOutputs: emptyRiverOutputData as RiverOutputData,
 };
 
 export default function MapPage() {
@@ -20,18 +24,40 @@ export default function MapPage() {
   const [data, setData] = useState(emptyRelatedData);
   const [warnings, setWarnings] = useState<string[]>([]);
   const [activeCard, setActiveCard] = useState<string | null>(null);
+  const [riverForecastHorizon, setRiverForecastHorizon] = useState(1);
 
   useEffect(() => {
     let active = true;
-    Promise.all([loadCsv(DATA_PATHS.master), loadCsv(DATA_PATHS.masterImputed), loadCsv(DATA_PATHS.jrc)]).then(
-      ([master, masterImputed, jrc]) => {
+    Promise.all([
+      loadCsv(DATA_PATHS.master),
+      loadCsv(DATA_PATHS.masterImputed),
+      loadCsv(DATA_PATHS.jrc),
+      loadCsv(DATA_PATHS.riverOutputs.raw),
+      loadCsv(DATA_PATHS.riverOutputs.imputation),
+      loadCsv(DATA_PATHS.riverOutputs.forecasts),
+    ]).then(
+      ([master, masterImputed, jrc, riverRaw, riverImputation, riverForecasts]) => {
         if (!active) return;
         setData({
           master: master.data,
           masterImputed: masterImputed.data,
           jrc: jrc.data,
+          riverOutputs: {
+            raw: riverRaw.data,
+            imputation: riverImputation.data,
+            forecasts: riverForecasts.data,
+          },
         });
-        setWarnings([master.warning, masterImputed.warning, jrc.warning].filter(Boolean) as string[]);
+        setWarnings(
+          [
+            master.warning,
+            masterImputed.warning,
+            jrc.warning,
+            riverRaw.warning,
+            riverImputation.warning,
+            riverForecasts.warning,
+          ].filter(Boolean) as string[],
+        );
       },
     );
     return () => {
@@ -39,8 +65,16 @@ export default function MapPage() {
     };
   }, []);
 
-  const relatedCharts = useMemo(() => buildRelatedFeatureCharts(selection, data), [selection, data]);
+  const relatedCharts = useMemo(() => {
+    if (selection?.type === "river") return buildRiverOutputChartsForRiver(selection.name, data.riverOutputs, riverForecastHorizon);
+    return buildRelatedFeatureCharts(selection, data);
+  }, [selection, data, riverForecastHorizon]);
   const active = relatedCharts.find((card) => card.id === activeCard);
+  const selectedRiverHasData = selection?.type === "river" ? hasRiverOutputData(selection.name, data.riverOutputs) : true;
+  const emptyMessage =
+    selection?.type === "river"
+      ? "No river graph data is currently available for this selected river."
+      : "No graph data is currently available for this selected feature.";
 
   return (
     <>
@@ -60,7 +94,7 @@ export default function MapPage() {
               <p className="eyebrow">{selection.type === "basin" ? "Selected basin" : "Selected river"}</p>
               <h2>{selection.displayName}</h2>
               <p>
-                Related graphs are shown below the map using the available monthly project data matched by feature name.
+                Related graphs are shown below the map using the available project data matched by feature name.
               </p>
             </>
           ) : (
@@ -91,8 +125,22 @@ export default function MapPage() {
               <h2>Related graphs</h2>
               <p className="muted">{selection.displayName}</p>
             </div>
+            {selection.type === "river" ? (
+              <div className="segmented compact" role="group" aria-label="River forecast horizon">
+                {[1, 3, 6].map((item) => (
+                  <button
+                    key={item}
+                    type="button"
+                    className={riverForecastHorizon === item ? "active" : ""}
+                    onClick={() => setRiverForecastHorizon(item)}
+                  >
+                    {item} month
+                  </button>
+                ))}
+              </div>
+            ) : null}
           </div>
-          {relatedCharts.length ? (
+          {relatedCharts.length && selectedRiverHasData ? (
             <div className="chart-grid related-chart-grid">
               {relatedCharts.map((card) => (
                 <ChartCard
@@ -101,19 +149,23 @@ export default function MapPage() {
                   subtitle={card.subtitle}
                   onOpen={() => setActiveCard(card.id)}
                 >
-                  <FigureView fig={card.figure} />
+                  {"description" in card ? (
+                    <RiverOutputView chart={card as RiverOutputChart} />
+                  ) : (
+                    <FigureView fig={card.figure} />
+                  )}
                 </ChartCard>
               ))}
             </div>
           ) : (
-            <p className="empty-state">No graph data is currently available for this selected feature.</p>
+            <p className="empty-state">{emptyMessage}</p>
           )}
         </section>
       ) : null}
 
       {active ? (
         <ChartModal title={active.title} onClose={() => setActiveCard(null)}>
-          <FigureView fig={active.figure} large />
+          {"description" in active ? <RiverOutputView chart={active as RiverOutputChart} large /> : <FigureView fig={active.figure} large />}
         </ChartModal>
       ) : null}
     </>

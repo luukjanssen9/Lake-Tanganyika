@@ -342,6 +342,14 @@ img {
   overflow: hidden;
 }
 
+.chart-card--wide {
+  grid-column: 1 / -1;
+}
+
+.chart-card--wide .chart-card__body {
+  min-height: 450px;
+}
+
 .chart-card__top,
 .modal-panel__top,
 .card-head,
@@ -408,6 +416,11 @@ img {
   font-size: 0.78rem;
   line-height: 1.4;
   color: #5b6675;
+}
+
+.river-output-view {
+  display: grid;
+  gap: 0.4rem;
 }
 
 .control-row,
@@ -621,6 +634,10 @@ img {
   margin-bottom: 1rem;
 }
 
+.toolbar .field {
+  max-width: 320px;
+}
+
 .segmented {
   display: inline-flex;
   flex-wrap: wrap;
@@ -654,6 +671,21 @@ img {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.river-forecast-section {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.river-forecast-section .card-head {
+  margin-bottom: 0;
+}
+
+.river-forecast-stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
 }
 
 .wide {
@@ -907,7 +939,8 @@ img {
   }
 
   .stat-grid,
-  .data-stats {
+  .data-stats,
+  .river-forecast-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -944,6 +977,7 @@ img {
 
   .stat-grid,
   .data-stats,
+  .river-forecast-stats,
   .chart-grid {
     grid-template-columns: 1fr;
   }
