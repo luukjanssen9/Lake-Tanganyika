@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-10T09:47:28.791Z",
+  "generatedAt": "2026-06-10T10:58:51.612Z",
   "repositoryRoot": "C:\\Users\\luukj\\Documents\\Important Documents\\UM\\Research Project 2\\Lake-Tanganyika\\Lake-Tanganyika",
   "files": [
     {
@@ -98,8 +98,8 @@
       "path": "data/predictions/model_comparison.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/model_comparison.csv",
-      "modifiedTime": "2026-06-10T09:40:41.814Z",
-      "sizeBytes": 822,
+      "modifiedTime": "2026-06-10T10:57:58.204Z",
+      "sizeBytes": 820,
       "rowCount": 9,
       "columns": [
         "model",
@@ -115,8 +115,8 @@
       "path": "data/predictions/sarimax_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/sarimax_predictions.csv",
-      "modifiedTime": "2026-06-10T09:40:41.798Z",
-      "sizeBytes": 14404,
+      "modifiedTime": "2026-06-10T10:57:58.184Z",
+      "sizeBytes": 14411,
       "rowCount": 165,
       "columns": [
         "date",
