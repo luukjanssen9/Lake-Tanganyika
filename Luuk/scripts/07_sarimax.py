@@ -92,7 +92,10 @@ def rolling_forecast(df: pd.DataFrame) -> pd.DataFrame:
 
         max_h = max(HORIZONS)
         X_future = X.iloc[train_end + 1: train_end + 1 + max_h]
-        forecast = fit.get_forecast(steps=max_h, exog=X_future).predicted_mean
+        fc = fit.get_forecast(steps=max_h, exog=X_future)
+        forecast = fc.predicted_mean
+        # 95% prediction interval (statsmodels returns lower/upper columns)
+        conf = fc.conf_int(alpha=0.05)
 
         for h in HORIZONS:
             target_idx = train_end + h
@@ -102,6 +105,8 @@ def rolling_forecast(df: pd.DataFrame) -> pd.DataFrame:
                 "model":          "sarimax",
                 "y_true":         float(y.iloc[target_idx]),
                 "y_pred":         float(forecast.iloc[h - 1]),
+                "y_lower":        float(conf.iloc[h - 1, 0]),
+                "y_upper":        float(conf.iloc[h - 1, 1]),
             })
 
         if i - last_logged >= 12 or i == len(train_end_indices) - 1:

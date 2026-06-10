@@ -403,6 +403,13 @@ img {
   padding: 1rem;
 }
 
+.chart-caption {
+  margin: 0.25rem 0.4rem 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #5b6675;
+}
+
 .control-row,
 .map-controls,
 .explorer-controls,

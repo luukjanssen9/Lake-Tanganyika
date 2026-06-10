@@ -62,6 +62,7 @@ export default function PredictionsPage() {
   const [warnings, setWarnings] = useState<string[]>([]);
   const [horizon, setHorizon] = useState(1);
   const [selectedModels, setSelectedModels] = useState(modelKeys);
+  const [showUncertainty, setShowUncertainty] = useState(true);
 
   useEffect(() => {
     let active = true;
@@ -135,6 +136,10 @@ export default function PredictionsPage() {
               {MODEL_LABELS[model]}
             </label>
           ))}
+          <label className="check-pill">
+            <input type="checkbox" checked={showUncertainty} onChange={() => setShowUncertainty((value) => !value)} />
+            Uncertainty band
+          </label>
         </div>
       </section>
 
@@ -157,7 +162,7 @@ export default function PredictionsPage() {
         <StatCard label="Largest sample size" value={String(sampleSize)} detail={`${horizon}-month horizon`} />
       </section>
 
-      <PredictionComparison predictions={data.predictions} metrics={data.metrics} selectedModels={selectedModels} horizon={horizon} />
+      <PredictionComparison predictions={data.predictions} metrics={data.metrics} selectedModels={selectedModels} horizon={horizon} showUncertainty={showUncertainty} />
 
       <section className="card table-card">
         <div className="card-head">

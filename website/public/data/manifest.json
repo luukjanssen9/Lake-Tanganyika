@@ -1,69 +1,69 @@
 {
-  "generatedAt": "2026-06-08T14:45:17.477Z",
-  "repositoryRoot": "/Users/gustavokoglin/MSC AI/projectLAKE/Lake-Tanganyika",
+  "generatedAt": "2026-06-10T09:47:28.791Z",
+  "repositoryRoot": "C:\\Users\\luukj\\Documents\\Important Documents\\UM\\Research Project 2\\Lake-Tanganyika\\Lake-Tanganyika",
   "files": [
     {
       "path": "data/docs/data_catalog.md",
       "type": "markdown",
       "sourcePath": "Luuk/reports/data_catalog.md",
-      "modifiedTime": "2026-06-08T14:45:17.397Z",
-      "sizeBytes": 18674
+      "modifiedTime": "2026-03-04T12:25:26.939Z",
+      "sizeBytes": 18728
     },
     {
       "path": "data/docs/data_lineage_and_dictionary.md",
       "type": "markdown",
       "sourcePath": "Luuk/reports/data_lineage_and_dictionary.md",
-      "modifiedTime": "2026-06-08T14:45:17.399Z",
-      "sizeBytes": 82112
+      "modifiedTime": "2026-03-04T12:25:26.941Z",
+      "sizeBytes": 82238
     },
     {
       "path": "data/docs/data_README.md",
       "type": "markdown",
       "sourcePath": "data/README.md",
-      "modifiedTime": "2026-06-08T14:45:17.379Z",
+      "modifiedTime": "2026-04-14T15:44:03.979Z",
       "sizeBytes": 9102
     },
     {
       "path": "data/docs/merge_summary.md",
       "type": "markdown",
       "sourcePath": "merge_summary.md",
-      "modifiedTime": "2026-06-08T14:45:17.389Z",
+      "modifiedTime": "2026-04-09T16:24:06.376Z",
       "sizeBytes": 3782
     },
     {
       "path": "data/docs/missing_data_report.md",
       "type": "markdown",
       "sourcePath": "Luuk/reports/missing_data_report.md",
-      "modifiedTime": "2026-06-08T14:45:17.399Z",
-      "sizeBytes": 10670
+      "modifiedTime": "2026-03-04T12:25:26.943Z",
+      "sizeBytes": 10819
     },
     {
       "path": "data/map/basins.geojson",
       "type": "geojson",
       "sourcePath": "static map/outputs/basins.geojson",
-      "modifiedTime": "2026-06-08T14:45:17.398Z",
-      "sizeBytes": 91813
+      "modifiedTime": "2026-06-10T09:30:16.793Z",
+      "sizeBytes": 91830
     },
     {
       "path": "data/map/rivers.geojson",
       "type": "geojson",
       "sourcePath": "static map/outputs/rivers.geojson",
-      "modifiedTime": "2026-06-08T14:45:17.395Z",
-      "sizeBytes": 217218
+      "modifiedTime": "2026-06-10T09:30:16.796Z",
+      "sizeBytes": 217235
     },
     {
       "path": "data/map/stations.geojson",
       "type": "geojson",
       "sourcePath": "static map/outputs/stations.geojson",
-      "modifiedTime": "2026-06-08T14:45:17.380Z",
-      "sizeBytes": 3218
+      "modifiedTime": "2026-06-10T09:30:16.801Z",
+      "sizeBytes": 3235
     },
     {
       "path": "data/predictions/baseline_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/baseline_predictions.csv",
-      "modifiedTime": "2026-06-08T14:45:17.385Z",
-      "sizeBytes": 119742,
+      "modifiedTime": "2026-05-30T11:21:41.174Z",
+      "sizeBytes": 122115,
       "rowCount": 2372,
       "columns": [
         "date",
@@ -77,8 +77,8 @@
       "path": "data/predictions/metrics_extended.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/metrics_extended.csv",
-      "modifiedTime": "2026-06-08T14:45:17.381Z",
-      "sizeBytes": 2360,
+      "modifiedTime": "2026-06-01T07:51:27.744Z",
+      "sizeBytes": 2376,
       "rowCount": 15,
       "columns": [
         "model",
@@ -98,9 +98,9 @@
       "path": "data/predictions/model_comparison.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/model_comparison.csv",
-      "modifiedTime": "2026-06-08T14:45:17.379Z",
-      "sizeBytes": 1308,
-      "rowCount": 15,
+      "modifiedTime": "2026-06-10T09:40:41.814Z",
+      "sizeBytes": 822,
+      "rowCount": 9,
       "columns": [
         "model",
         "horizon_months",
@@ -115,23 +115,25 @@
       "path": "data/predictions/sarimax_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/sarimax_predictions.csv",
-      "modifiedTime": "2026-06-08T14:45:17.381Z",
-      "sizeBytes": 8326,
+      "modifiedTime": "2026-06-10T09:40:41.798Z",
+      "sizeBytes": 14404,
       "rowCount": 165,
       "columns": [
         "date",
         "horizon_months",
         "model",
         "y_true",
-        "y_pred"
+        "y_pred",
+        "y_lower",
+        "y_upper"
       ]
     },
     {
       "path": "data/predictions/xgboost_diff_feature_importance.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/xgboost_diff_feature_importance.csv",
-      "modifiedTime": "2026-06-08T14:45:17.388Z",
-      "sizeBytes": 2059,
+      "modifiedTime": "2026-05-30T12:52:26.379Z",
+      "sizeBytes": 2105,
       "rowCount": 45,
       "columns": [
         "horizon_months",
@@ -144,8 +146,8 @@
       "path": "data/predictions/xgboost_diff_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/xgboost_diff_predictions.csv",
-      "modifiedTime": "2026-06-08T14:45:17.386Z",
-      "sizeBytes": 16836,
+      "modifiedTime": "2026-05-30T12:52:26.375Z",
+      "sizeBytes": 17013,
       "rowCount": 176,
       "columns": [
         "date",
@@ -161,8 +163,8 @@
       "path": "data/predictions/xgboost_feature_importance.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/xgboost_feature_importance.csv",
-      "modifiedTime": "2026-06-08T14:45:17.387Z",
-      "sizeBytes": 2326,
+      "modifiedTime": "2026-05-30T12:19:00.063Z",
+      "sizeBytes": 2372,
       "rowCount": 45,
       "columns": [
         "horizon_months",
@@ -175,8 +177,8 @@
       "path": "data/predictions/xgboost_predictions.csv",
       "type": "csv",
       "sourcePath": "Luuk/reports/xgboost_predictions.csv",
-      "modifiedTime": "2026-06-08T14:45:17.389Z",
-      "sizeBytes": 8822,
+      "modifiedTime": "2026-05-30T12:19:00.058Z",
+      "sizeBytes": 8999,
       "rowCount": 176,
       "columns": [
         "date",
@@ -190,8 +192,8 @@
       "path": "data/processed/dahiti/lake_tanganyika_water_level.csv",
       "type": "csv",
       "sourcePath": "data/outputs/dahiti/lake_tanganyika_water_level.csv",
-      "modifiedTime": "2026-06-08T14:45:17.380Z",
-      "sizeBytes": 28541,
+      "modifiedTime": "2026-04-14T14:19:27.669Z",
+      "sizeBytes": 29401,
       "rowCount": 859,
       "columns": [
         "date",
@@ -203,8 +205,8 @@
       "path": "data/processed/jrc/buzimba_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/buzimba_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.414Z",
-      "sizeBytes": 12195,
+      "modifiedTime": "2026-04-14T15:48:44.399Z",
+      "sizeBytes": 12700,
       "rowCount": 504,
       "columns": [
         "river",
@@ -219,8 +221,8 @@
       "path": "data/processed/jrc/jiji_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/jiji_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.432Z",
-      "sizeBytes": 10527,
+      "modifiedTime": "2026-04-14T15:27:04.431Z",
+      "sizeBytes": 11032,
       "rowCount": 504,
       "columns": [
         "river",
@@ -235,8 +237,8 @@
       "path": "data/processed/jrc/jrc_surface_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/jrc_surface_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.431Z",
-      "sizeBytes": 126597,
+      "modifiedTime": "2026-04-14T15:27:56.181Z",
+      "sizeBytes": 131638,
       "rowCount": 5040,
       "columns": [
         "river",
@@ -251,8 +253,8 @@
       "path": "data/processed/jrc/kaburantwa_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/kaburantwa_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.433Z",
-      "sizeBytes": 13589,
+      "modifiedTime": "2026-04-14T15:27:34.943Z",
+      "sizeBytes": 14094,
       "rowCount": 504,
       "columns": [
         "river",
@@ -267,8 +269,8 @@
       "path": "data/processed/jrc/mpanda_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/mpanda_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.434Z",
-      "sizeBytes": 11497,
+      "modifiedTime": "2026-04-14T15:27:08.213Z",
+      "sizeBytes": 12002,
       "rowCount": 504,
       "columns": [
         "river",
@@ -283,8 +285,8 @@
       "path": "data/processed/jrc/mulembwe_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/mulembwe_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.437Z",
-      "sizeBytes": 14497,
+      "modifiedTime": "2026-04-14T15:27:01.362Z",
+      "sizeBytes": 15002,
       "rowCount": 504,
       "columns": [
         "river",
@@ -299,8 +301,8 @@
       "path": "data/processed/jrc/mutimbuzi_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/mutimbuzi_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.439Z",
-      "sizeBytes": 13002,
+      "modifiedTime": "2026-04-14T15:27:10.680Z",
+      "sizeBytes": 13507,
       "rowCount": 504,
       "columns": [
         "river",
@@ -315,8 +317,8 @@
       "path": "data/processed/jrc/nyakagunda_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/nyakagunda_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.442Z",
-      "sizeBytes": 13513,
+      "modifiedTime": "2026-04-14T15:27:56.143Z",
+      "sizeBytes": 14018,
       "rowCount": 504,
       "columns": [
         "river",
@@ -331,8 +333,8 @@
       "path": "data/processed/jrc/nyamagana_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/nyamagana_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.442Z",
-      "sizeBytes": 13123,
+      "modifiedTime": "2026-04-14T15:27:37.322Z",
+      "sizeBytes": 13628,
       "rowCount": 504,
       "columns": [
         "river",
@@ -347,8 +349,8 @@
       "path": "data/processed/jrc/nyengwe_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/nyengwe_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.442Z",
-      "sizeBytes": 12266,
+      "modifiedTime": "2026-04-14T15:26:37.902Z",
+      "sizeBytes": 12771,
       "rowCount": 504,
       "columns": [
         "river",
@@ -363,8 +365,8 @@
       "path": "data/processed/jrc/rusizi_jrc_water_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/jrc/rusizi_jrc_water_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.443Z",
-      "sizeBytes": 12910,
+      "modifiedTime": "2026-04-14T15:27:14.157Z",
+      "sizeBytes": 13415,
       "rowCount": 504,
       "columns": [
         "river",
@@ -379,8 +381,8 @@
       "path": "data/processed/lake_tanganyika_modeling_table.csv",
       "type": "csv",
       "sourcePath": "Luuk/lake_tanganyika_modeling_table.csv",
-      "modifiedTime": "2026-06-08T14:45:17.395Z",
-      "sizeBytes": 687205,
+      "modifiedTime": "2026-05-29T11:44:50.276Z",
+      "sizeBytes": 687609,
       "rowCount": 403,
       "columns": [
         "date",
@@ -523,8 +525,8 @@
       "path": "data/processed/master_dataset_inputed.csv",
       "type": "csv",
       "sourcePath": "data/outputs/master_dataset_inputed.csv",
-      "modifiedTime": "2026-06-08T14:45:17.400Z",
-      "sizeBytes": 1604149,
+      "modifiedTime": "2026-06-03T08:54:41.152Z",
+      "sizeBytes": 1608814,
       "rowCount": 4664,
       "columns": [
         "river",
@@ -560,8 +562,8 @@
       "path": "data/processed/master_dataset_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/master_dataset_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.400Z",
-      "sizeBytes": 1288849,
+      "modifiedTime": "2026-06-03T08:54:41.159Z",
+      "sizeBytes": 1293514,
       "rowCount": 4664,
       "columns": [
         "river",
@@ -591,8 +593,8 @@
       "path": "data/processed/ndvi/buzimba_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/buzimba_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.414Z",
-      "sizeBytes": 7075,
+      "modifiedTime": "2026-04-14T15:38:59.831Z",
+      "sizeBytes": 7388,
       "rowCount": 312,
       "columns": [
         "river",
@@ -605,8 +607,8 @@
       "path": "data/processed/ndvi/jiji_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/jiji_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.415Z",
-      "sizeBytes": 6151,
+      "modifiedTime": "2026-04-14T15:39:02.044Z",
+      "sizeBytes": 6464,
       "rowCount": 312,
       "columns": [
         "river",
@@ -619,8 +621,8 @@
       "path": "data/processed/ndvi/kaburantwa_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/kaburantwa_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.415Z",
-      "sizeBytes": 8011,
+      "modifiedTime": "2026-04-14T15:39:07.674Z",
+      "sizeBytes": 8324,
       "rowCount": 312,
       "columns": [
         "river",
@@ -633,8 +635,8 @@
       "path": "data/processed/ndvi/mpanda_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/mpanda_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.415Z",
-      "sizeBytes": 6780,
+      "modifiedTime": "2026-04-14T15:39:04.401Z",
+      "sizeBytes": 7093,
       "rowCount": 312,
       "columns": [
         "river",
@@ -647,8 +649,8 @@
       "path": "data/processed/ndvi/mulembwe_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/mulembwe_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.416Z",
-      "sizeBytes": 7387,
+      "modifiedTime": "2026-04-14T15:39:00.812Z",
+      "sizeBytes": 7700,
       "rowCount": 312,
       "columns": [
         "river",
@@ -661,8 +663,8 @@
       "path": "data/processed/ndvi/mutimbuzi_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/mutimbuzi_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.416Z",
-      "sizeBytes": 7722,
+      "modifiedTime": "2026-04-14T15:39:05.459Z",
+      "sizeBytes": 8035,
       "rowCount": 312,
       "columns": [
         "river",
@@ -675,8 +677,8 @@
       "path": "data/processed/ndvi/nyakagunda_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/nyakagunda_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.416Z",
-      "sizeBytes": 8027,
+      "modifiedTime": "2026-04-14T15:39:09.822Z",
+      "sizeBytes": 8340,
       "rowCount": 312,
       "columns": [
         "river",
@@ -689,8 +691,8 @@
       "path": "data/processed/ndvi/nyamagana_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/nyamagana_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.416Z",
-      "sizeBytes": 7699,
+      "modifiedTime": "2026-04-14T15:39:08.519Z",
+      "sizeBytes": 8012,
       "rowCount": 312,
       "columns": [
         "river",
@@ -703,8 +705,8 @@
       "path": "data/processed/ndvi/nyengwe_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/nyengwe_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.417Z",
-      "sizeBytes": 6876,
+      "modifiedTime": "2026-04-14T15:38:58.452Z",
+      "sizeBytes": 7189,
       "rowCount": 312,
       "columns": [
         "river",
@@ -717,8 +719,8 @@
       "path": "data/processed/ndvi/rusizi_ndvi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/ndvi/rusizi_ndvi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.417Z",
-      "sizeBytes": 6786,
+      "modifiedTime": "2026-04-14T15:39:06.468Z",
+      "sizeBytes": 7099,
       "rowCount": 312,
       "columns": [
         "river",
@@ -731,8 +733,8 @@
       "path": "data/processed/output_manifest.csv",
       "type": "csv",
       "sourcePath": "data/outputs/output_manifest.csv",
-      "modifiedTime": "2026-06-08T14:45:17.380Z",
-      "sizeBytes": 499,
+      "modifiedTime": "2026-04-13T12:30:42.061Z",
+      "sizeBytes": 512,
       "rowCount": 12,
       "columns": [
         "file",
@@ -743,8 +745,8 @@
       "path": "data/processed/per_river/buzimba_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/buzimba_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.416Z",
-      "sizeBytes": 130203,
+      "modifiedTime": "2026-04-13T13:14:47.670Z",
+      "sizeBytes": 130600,
       "rowCount": 396,
       "columns": [
         "river",
@@ -777,8 +779,8 @@
       "path": "data/processed/per_river/buzimba_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/buzimba_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.444Z",
-      "sizeBytes": 109714,
+      "modifiedTime": "2026-04-13T13:14:36.737Z",
+      "sizeBytes": 110111,
       "rowCount": 396,
       "columns": [
         "river",
@@ -807,8 +809,8 @@
       "path": "data/processed/per_river/jiji_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/jiji_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.446Z",
-      "sizeBytes": 164483,
+      "modifiedTime": "2026-04-13T13:14:47.699Z",
+      "sizeBytes": 165012,
       "rowCount": 528,
       "columns": [
         "river",
@@ -841,8 +843,8 @@
       "path": "data/processed/per_river/jiji_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/jiji_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.446Z",
-      "sizeBytes": 144613,
+      "modifiedTime": "2026-04-13T13:14:36.757Z",
+      "sizeBytes": 145142,
       "rowCount": 528,
       "columns": [
         "river",
@@ -871,8 +873,8 @@
       "path": "data/processed/per_river/kaburantwa_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/kaburantwa_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.449Z",
-      "sizeBytes": 156556,
+      "modifiedTime": "2026-04-13T13:14:47.727Z",
+      "sizeBytes": 157066,
       "rowCount": 509,
       "columns": [
         "river",
@@ -905,8 +907,8 @@
       "path": "data/processed/per_river/kaburantwa_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/kaburantwa_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.448Z",
-      "sizeBytes": 127304,
+      "modifiedTime": "2026-04-13T13:14:36.770Z",
+      "sizeBytes": 127814,
       "rowCount": 509,
       "columns": [
         "river",
@@ -935,8 +937,8 @@
       "path": "data/processed/per_river/mpanda_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mpanda_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.448Z",
-      "sizeBytes": 58744,
+      "modifiedTime": "2026-04-13T13:14:47.750Z",
+      "sizeBytes": 58936,
       "rowCount": 191,
       "columns": [
         "river",
@@ -969,8 +971,8 @@
       "path": "data/processed/per_river/mpanda_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mpanda_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.448Z",
-      "sizeBytes": 51095,
+      "modifiedTime": "2026-04-13T13:14:36.777Z",
+      "sizeBytes": 51287,
       "rowCount": 191,
       "columns": [
         "river",
@@ -999,8 +1001,8 @@
       "path": "data/processed/per_river/mulembwe_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mulembwe_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.450Z",
-      "sizeBytes": 165968,
+      "modifiedTime": "2026-04-13T13:14:47.779Z",
+      "sizeBytes": 166490,
       "rowCount": 521,
       "columns": [
         "river",
@@ -1033,8 +1035,8 @@
       "path": "data/processed/per_river/mulembwe_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mulembwe_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.452Z",
-      "sizeBytes": 145895,
+      "modifiedTime": "2026-04-13T13:14:36.788Z",
+      "sizeBytes": 146417,
       "rowCount": 521,
       "columns": [
         "river",
@@ -1063,8 +1065,8 @@
       "path": "data/processed/per_river/mutimbuzi_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mutimbuzi_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.451Z",
-      "sizeBytes": 138323,
+      "modifiedTime": "2026-04-13T13:14:47.806Z",
+      "sizeBytes": 138755,
       "rowCount": 431,
       "columns": [
         "river",
@@ -1097,8 +1099,8 @@
       "path": "data/processed/per_river/mutimbuzi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/mutimbuzi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.452Z",
-      "sizeBytes": 121369,
+      "modifiedTime": "2026-04-13T13:14:36.788Z",
+      "sizeBytes": 121801,
       "rowCount": 431,
       "columns": [
         "river",
@@ -1127,8 +1129,8 @@
       "path": "data/processed/per_river/nyakagunda_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyakagunda_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.454Z",
-      "sizeBytes": 160180,
+      "modifiedTime": "2026-04-13T13:14:47.835Z",
+      "sizeBytes": 160709,
       "rowCount": 528,
       "columns": [
         "river",
@@ -1161,8 +1163,8 @@
       "path": "data/processed/per_river/nyakagunda_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyakagunda_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.454Z",
-      "sizeBytes": 130127,
+      "modifiedTime": "2026-04-13T13:14:36.813Z",
+      "sizeBytes": 130656,
       "rowCount": 528,
       "columns": [
         "river",
@@ -1191,8 +1193,8 @@
       "path": "data/processed/per_river/nyamagana_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyamagana_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.454Z",
-      "sizeBytes": 159198,
+      "modifiedTime": "2026-04-13T13:14:47.866Z",
+      "sizeBytes": 159727,
       "rowCount": 528,
       "columns": [
         "river",
@@ -1225,8 +1227,8 @@
       "path": "data/processed/per_river/nyamagana_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyamagana_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.454Z",
-      "sizeBytes": 129741,
+      "modifiedTime": "2026-04-13T13:14:36.823Z",
+      "sizeBytes": 130270,
       "rowCount": 528,
       "columns": [
         "river",
@@ -1255,8 +1257,8 @@
       "path": "data/processed/per_river/nyengwe_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyengwe_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.455Z",
-      "sizeBytes": 160713,
+      "modifiedTime": "2026-04-13T13:14:47.894Z",
+      "sizeBytes": 161218,
       "rowCount": 504,
       "columns": [
         "river",
@@ -1289,8 +1291,8 @@
       "path": "data/processed/per_river/nyengwe_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/nyengwe_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.455Z",
-      "sizeBytes": 136492,
+      "modifiedTime": "2026-04-13T13:14:36.844Z",
+      "sizeBytes": 136997,
       "rowCount": 504,
       "columns": [
         "river",
@@ -1319,8 +1321,8 @@
       "path": "data/processed/per_river/rusizi_imputed_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/rusizi_imputed_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.456Z",
-      "sizeBytes": 164378,
+      "modifiedTime": "2026-04-13T13:14:47.923Z",
+      "sizeBytes": 164907,
       "rowCount": 528,
       "columns": [
         "river",
@@ -1353,8 +1355,8 @@
       "path": "data/processed/per_river/rusizi_monthly.csv",
       "type": "csv",
       "sourcePath": "data/outputs/per_river/rusizi_monthly.csv",
-      "modifiedTime": "2026-06-08T14:45:17.455Z",
-      "sizeBytes": 143869,
+      "modifiedTime": "2026-04-13T13:14:36.856Z",
+      "sizeBytes": 144398,
       "rowCount": 528,
       "columns": [
         "river",
@@ -1383,21 +1385,21 @@
       "path": "images/hero/lake-tanganyika-pexels-isaac-naph.jpg",
       "type": "image",
       "sourcePath": "website/source-assets/hero/lake-tanganyika-pexels-isaac-naph.jpg",
-      "modifiedTime": "2026-06-08T14:45:17.444Z",
+      "modifiedTime": "2026-06-10T09:30:17.030Z",
       "sizeBytes": 2120783
     },
     {
       "path": "images/maps/full-basin.png",
       "type": "image",
       "sourcePath": "basins/maps/full-basin.png",
-      "modifiedTime": "2026-06-08T14:45:17.430Z",
+      "modifiedTime": "2026-06-03T08:54:41.089Z",
       "sizeBytes": 3173853
     },
     {
       "path": "images/maps/sub-basin.png",
       "type": "image",
       "sourcePath": "basins/maps/sub-basin.png",
-      "modifiedTime": "2026-06-08T14:45:17.440Z",
+      "modifiedTime": "2026-06-03T08:54:41.096Z",
       "sizeBytes": 671327
     }
   ],
