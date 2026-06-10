@@ -17,10 +17,12 @@ Evaluation:
     history and forecast 1, 3, and 6 months ahead.
 
 Note on exogenous values:
-    Future precip/temp are taken as known (ERA5 reanalysis exists for the
-    whole period). This is "perfect-foresight" for weather and so represents
-    an upper bound; an operational forecast would need a seasonal weather
-    forecast (NMME / SEAS5) as input.
+    Future precip/temp are NOT taken as known. For each forecast the exogenous
+    horizon is filled with the seasonal climatology (per-calendar-month mean)
+    computed only from the training history up to that cutoff. This keeps the
+    forecast strictly out-of-sample (no future leakage) while still letting the
+    model use the expected seasonal weather pattern, as an operational forecast
+    would in place of a seasonal weather forecast (NMME / SEAS5).
 
 Outputs:
     reports/sarimax_predictions.csv
@@ -91,7 +93,15 @@ def rolling_forecast(df: pd.DataFrame) -> pd.DataFrame:
         fit = model.fit(disp=False, maxiter=200)
 
         max_h = max(HORIZONS)
-        X_future = X.iloc[train_end + 1: train_end + 1 + max_h]
+        # Operational forecast: future precip/temp are NOT known. Fill the
+        # forecast horizon with the seasonal climatology (per-calendar-month
+        # mean) computed only from the training history up to this cutoff.
+        clim = X_train.groupby(X_train.index.month).mean()
+        future_index = df.index[train_end + 1: train_end + 1 + max_h]
+        X_future = pd.DataFrame(
+            {col: [clim.loc[m, col] for m in future_index.month] for col in EXOG_COLS},
+            index=future_index,
+        )
         fc = fit.get_forecast(steps=max_h, exog=X_future)
         forecast = fc.predicted_mean
         # 95% prediction interval (statsmodels returns lower/upper columns)
