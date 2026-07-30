@@ -213,7 +213,7 @@ Bug reports and feature ideas are equally welcome via the issue tracker.
 
 ## License
 
-_License to be determined._ Add a `LICENSE` file (e.g. [MIT](https://choosealicense.com/licenses/mit/)) before public release. Until then, all rights reserved by the authors.
+Released under the [MIT License](LICENSE) — free to use, modify, and distribute with attribution.
 
 ---
 
