@@ -1,0 +1,26 @@
+# Python dependencies for the Lake Tanganyika project.
+# Tested with Python 3.12. Install with:  pip install -r requirements.txt
+
+# --- Core data stack ---
+numpy>=1.26
+pandas>=2.1
+pyarrow>=15.0          # Parquet I/O
+
+# --- Modeling (scripts/forecasting) ---
+statsmodels>=0.14      # SARIMAX (07_sarimax.py)
+xgboost>=2.0           # gradient-boosted trees (08/09)
+scikit-learn>=1.4      # metrics / model utilities
+
+# --- Plotting & reporting ---
+matplotlib>=3.8        # validation charts (11_plot_validation.py)
+tabulate>=0.9          # DataFrame.to_markdown()
+
+# --- Data acquisition (scripts/download) ---
+cdsapi>=0.7            # Copernicus Climate Data Store client (ERA5)
+xarray>=2024.1         # NetCDF handling
+netCDF4>=1.6           # xarray NetCDF engine
+openpyxl>=3.1          # reading the imputed *.xlsx station files
+
+# --- Geospatial (analysis/static_map) ---
+geopandas>=0.14
+shapely>=2.0

@@ -683,7 +683,7 @@ def build_summary_markdown(
     lines.append("- Water level panels were built from each river's minimum to maximum observed water-level month; no imputation was applied.")
     lines.append("- `water_level` equals `water_level_observed`, and `runoff` equals `runoff_observed` because this build does not create filled or modeled series.")
     lines.append("- River and station names were standardized by removing accents, normalizing case, collapsing spacing and punctuation, and applying explicit aliases such as `BASSE-MULEMBWE` -> `Mulembwe` and `MUREMBWE` -> `Mulembwe`.")
-    lines.append("- Observed climate sources were chosen per river by preferring stations that share the river's ERA5 grid from `era5_download/README.md`; if none existed on that grid, the nearest observed station by coordinates was used.")
+    lines.append("- Observed climate sources were chosen per river by preferring stations that share the river's ERA5 grid from `scripts/download/era5/README.md`; if none existed on that grid, the nearest observed station by coordinates was used.")
     lines.append("- ERA5 hourly temperature and dewpoint were converted from Kelvin to degrees Celsius, and ERA5 precipitation totals were converted from meters to millimeters after monthly aggregation.")
     lines.append("")
     lines.append("## Assumptions And Gaps")

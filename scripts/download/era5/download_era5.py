@@ -35,13 +35,13 @@ Output: raw/<location>/era5_<location>_1940_<current_year>.nc
 
 Setup
 -----
-1.  Register at https://cds.climate.copernicus.eu/ and accept the ERA5 licence.
+1.  Register at https://cds.climate.copernicus.eu/ and accept the ERA5 license.
 2.  pip install cdsapi
 3.  Create ~/.cdsapirc:
         url: https://cds.climate.copernicus.eu/api
         key: <your-personal-access-token>
 4.  Run:
-        python era5_download/download_era5.py
+        python scripts/download/era5/download_era5.py
 """
 
 from __future__ import annotations

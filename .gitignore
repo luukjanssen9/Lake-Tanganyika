@@ -4,9 +4,13 @@
 *.asc
 *.lock
 
-# Raw data and ERA5 downloads (too large for git)
+# Raw / regenerable data too large for git
 data/raw/
-data/era5/
+
+# ERA5: ignore raw NetCDF and hourly CSVs, but keep the small monthly
+# aggregates (they are model inputs consumed by scripts/forecasting).
+data/era5/*
+!data/era5/csv_monthly/
 
 # Large archives
 *.zip

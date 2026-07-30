@@ -75,7 +75,7 @@ Northern Burundi catchment, covering all project stations: **lat −2.75° to �
 
 ## Setup
 
-1. Register at <https://cds.climate.copernicus.eu/> and accept the ERA5 licence.
+1. Register at <https://cds.climate.copernicus.eu/> and accept the ERA5 license.
 
 2. Install the CDS API client:
    ```bash

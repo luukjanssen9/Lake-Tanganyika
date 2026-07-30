@@ -10,13 +10,13 @@ New variables (all available in the timeseries dataset):
 The script:
   1. Downloads the 4 extra variables for all 8 locations (full 1940–present range)
   2. Converts each to a temporary DataFrame
-  3. Merges on timestamp with the existing CSVs in era5_download/csv/
+  3. Merges on timestamp with the existing CSVs in data/era5/csv/
   4. Overwrites the CSVs in place with the combined data
 
 Run after download_era5.py and convert_to_csv.py have already been run.
 
 Usage:
-    python era5_download/download_era5_extra.py
+    python scripts/download/era5/download_era5_extra.py
 """
 
 from __future__ import annotations

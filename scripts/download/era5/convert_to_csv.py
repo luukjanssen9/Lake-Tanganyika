@@ -8,7 +8,7 @@ Each CSV has one row per hour with columns:
     timestamp, latitude, longitude, t2m, tp, u10, v10, e, ro, pev
 
 Usage:
-    python era5_download/convert_to_csv.py
+    python scripts/download/era5/convert_to_csv.py
 """
 
 from __future__ import annotations

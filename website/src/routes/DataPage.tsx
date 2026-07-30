@@ -33,14 +33,14 @@ const researchDataCards: ResearchDataCard[] = [
     name: "River and Basin Data",
     description: "GeoJSON basin and river files used to map the contributing catchments and river network around Lake Tanganyika.",
     source: "Project static map outputs and processed geospatial files.",
-    usedFor: "Map visualisation and spatial context.",
+    usedFor: "Map visualization and spatial context.",
     matchers: ["data/map/basins.geojson", "data/map/rivers.geojson"],
   },
   {
     name: "Gauge / Station Data",
     description: "Monitoring station or gauge locations used to connect hydrological observations to the map and basin structure.",
     source: "Processed project station GeoJSON files.",
-    usedFor: "Map visualisation and data interpretation.",
+    usedFor: "Map visualization and data interpretation.",
     matchers: ["data/map/stations.geojson"],
   },
   {
@@ -63,7 +63,7 @@ const researchDataCards: ResearchDataCard[] = [
     description:
       "Prediction outputs from different models, including baseline models, SARIMAX, XGBoost, and XGBoost-difference models.",
     source: "Project reports and model output CSV files.",
-    usedFor: "Predictions page, model comparison, and forecast visualisation.",
+    usedFor: "Predictions page, model comparison, and forecast visualization.",
     matchers: [
       "data/predictions/baseline_predictions.csv",
       "data/predictions/sarimax_predictions.csv",

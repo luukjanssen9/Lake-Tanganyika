@@ -2,7 +2,7 @@
 Quick inspection helper for downloaded ERA5 NetCDF files.
 
 Usage:
-    python inspect_era5.py                  # summarise all files in ./raw/
+    python inspect_era5.py                  # summarize all files in ./raw/
     python inspect_era5.py raw/era5_*.nc   # pass specific files
 """
 
@@ -17,7 +17,7 @@ import xarray as xr
 RAW_DIR = Path(__file__).parent / "raw"
 
 
-def summarise(path: Path) -> None:
+def summarize(path: Path) -> None:
     print(f"\n{'='*60}")
     print(f"File : {path.name}  ({path.stat().st_size / 1e6:.1f} MB)")
     ds = xr.open_dataset(path)
@@ -46,7 +46,7 @@ def main() -> None:
 
     for p in paths:
         try:
-            summarise(p)
+            summarize(p)
         except Exception as exc:
             print(f"  ERROR reading {p.name}: {exc}")
 

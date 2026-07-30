@@ -18,7 +18,7 @@ Raw input data lives in `raw/` and `era5/`. Processed outputs ready for analysis
 Contains two types of files:
 
 - **River water level files** (`Niveaux d'eau de la Riviere *.xlsx`)
-  Monthly gauge height (metres) at the river mouth for 11 rivers:
+  Monthly gauge height (meters) at the river mouth for 11 rivers:
   Buzimba, Dama, Jiji, Kaburantwa, Mpanda, Mulembwe, Mutimbuzi,
   Nyakagunda, Nyamagana, Nyengwe, RUSIZI
 
@@ -130,8 +130,8 @@ whole lake's water level.
 | Column | Description | Unit |
 |---|---|---|
 | `date` | Observation datetime | UTC |
-| `water_level_m` | Water surface elevation (WSE) above geoid | metres (~774 m) |
-| `uncertainty_m` | Estimated measurement uncertainty | metres |
+| `water_level_m` | Water surface elevation (WSE) above geoid | meters (~774 m) |
+| `uncertainty_m` | Estimated measurement uncertainty | meters |
 
 ---
 
@@ -140,7 +140,7 @@ whole lake's water level.
 **Source:** JRC Global Surface Water (GSW), European Commission Joint Research Centre
 **Dataset:** JRC/GSW1_4/MonthlyHistory via Google Earth Engine
 **Website:** https://global-surface-water.appspot.com/
-**GEE catalogue:** https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_MonthlyHistory
+**GEE catalog:** https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_MonthlyHistory
 **Download script:** `scripts/download/download_jrc_surface_water.py`
 
 Monthly fraction of 30m Landsat pixels classified as water within a 2 km radius buffer
@@ -166,10 +166,10 @@ of data quality and usefulness per river.
 **Source:** NASA MODIS Terra — MOD13A1 Version 6.1
 **Dataset:** MODIS/061/MOD13A1 via Google Earth Engine
 **Website:** https://lpdaac.usgs.gov/products/mod13a1v061/
-**GEE catalogue:** https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13A1
+**GEE catalog:** https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13A1
 **Download script:** `scripts/download/download_modis_ndvi.py`
 
-Monthly mean NDVI (Normalised Difference Vegetation Index) extracted from 500m 16-day MODIS
+Monthly mean NDVI (Normalized Difference Vegetation Index) extracted from 500m 16-day MODIS
 composites at each river's ERA5 grid point (2000–present). NDVI ranges from -1 to +1, where
 values above 0.6 indicate dense healthy vegetation, 0.3–0.6 moderate vegetation, and below
 0.2 bare soil or water. High values indicate dense vegetation cover which affects catchment

@@ -7,12 +7,12 @@ Unit conversions applied before aggregation:
   msl       : Pa → hPa (/100)              — monthly mean
   u10, v10  : m/s (unchanged)              — monthly mean
 
-Output: era5_download/csv_monthly/era5_<location>_monthly.csv
+Output: data/era5/csv_monthly/era5_<location>_monthly.csv
 Columns: year, month, location, t2m_mean_C, d2m_mean_C, tp_sum_mm,
          msl_mean_hPa, u10_mean, v10_mean
 
 Usage:
-    python era5_download/aggregate_monthly.py
+    python scripts/download/era5/aggregate_monthly.py
 """
 
 from __future__ import annotations
