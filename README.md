@@ -24,7 +24,7 @@ On a strict out-of-sample test over the most recent 5 years (expanding-window, n
 
 All results ship as an interactive **React + TypeScript + Vite** dashboard (Plotly charts, Leaflet map) so the analysis is explorable, not just a folder of CSVs.
 
-> **Live demo:** _deploy `website/` to GitHub Pages, Vercel, or Netlify and drop the link here._ &nbsp;·&nbsp; Run locally: `cd website && npm install && npm run dev`
+> **🔗 Live demo:** **https://luukjanssen9.github.io/Lake-Tanganyika/** &nbsp;·&nbsp; Run locally: `cd website && npm install && npm run dev`
 
 <p align="center">
   <img src="docs/screenshots/intro.png" alt="Lake Tanganyika dashboard — landing page" width="850">

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import "./styles.css";
 
@@ -13,7 +13,7 @@ import PredictionsPage from "./routes/PredictionsPage";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<IntroPage />} />
@@ -24,6 +24,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
 );
